@@ -172,14 +172,17 @@ p{
 }
 
 #features{
-	background: #26B1AA;
+	background:#066c9e;
 }
 .features-inner{
-	background: #0F9B92;
+	background: #0b9be1;
 }
 .features-link{
 	color: #26B1AA;
 	border-bottom: 1px solid #26B1AA !important;
+}
+#features-inner{
+	background: #0b9be1;
 }
 
 #contact{
@@ -192,6 +195,20 @@ p{
 	color: #FD6632;
 	border-bottom: 1px solid #FD6632 !important;
 }
+
+
+#feedbacks{
+	background: #0b9be1;
+}
+.feedbacks-inner{
+	background: #066c9e;
+}
+.feedbacks-link{
+	color: #0b9be1;
+	border-bottom: 1px solid #0b9be1 !important;	
+}
+
+
 
 /*Common Elements*/
 .main-heading{
@@ -338,7 +355,7 @@ content:' / ';
 }
 /*ABOUT*/
 .about-quote{
-	background: #0A4763;
+	background: #0b9be1;
 	padding: 15px;
 	border-radius: 5px;
 	color: #fff;
@@ -454,7 +471,7 @@ font-weight: normal;
     
 }
 .tab-content{
-	background: #14726C;
+	background: #5B0B26;
 	padding: 20px;
 	color: #fff !important;
 	border-bottom-right-radius: 5px;
@@ -481,8 +498,8 @@ font-weight: normal;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
-    background-color: #14726C;
-    border-color: #14726C;
+    background-color: #5B0B26;
+    border-color: #5B0B26;
     border-image: none;
     border-style: solid;
     border-width: 1px;
