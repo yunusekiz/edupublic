@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 07 Nis 2013, 18:48:20
+-- Üretim Zamanı: 16 Nis 2013, 20:17:33
 -- Sunucu sürümü: 5.5.25a
 -- PHP Sürümü: 5.4.4
 
@@ -28,16 +28,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` text NOT NULL,
+  `email` text NOT NULL,
   `pass` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Tablo döküm verisi `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `pass`) VALUES
+INSERT INTO `admin` (`id`, `email`, `pass`) VALUES
 (1, 'admin@edupublic.com', '12345');
 
 -- --------------------------------------------------------
