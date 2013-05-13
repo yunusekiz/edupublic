@@ -79,36 +79,5 @@ class about extends CI_Controller {
 				
 	}
 
-	public function errorMessage($message)
-	{
-		$this->parser_data = array(
-									'base' 				=> $this->base_data,
-									'error_message'		=> $message
-								  );
-
-		// admin panelinin ilgili view lerini yükler
-		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
-		$this->parser->parse('backend_views/error_view',$this->parser_data);
-		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
-		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);
-		echo "<meta http-equiv=\"refresh\" content=\"3; url=../about/editAboutUs\">";	
-
-	}
-
-	public function successMessage($message)
-	{
-		$this->parser_data = array(
-									'base' 				=> $this->base_data,
-									'success_message'	=> $message
-								  );
-
-		// admin panelinin ilgili view lerini yükler
-		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
-		$this->parser->parse('backend_views/success_view',$this->parser_data);
-		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
-		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);
-		echo "<meta http-equiv=\"refresh\" content=\"3; url=../about/editAboutUs\">";	
-
-	}
 	
 }

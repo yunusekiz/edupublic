@@ -55,7 +55,19 @@
 								<p>
 									<label> Google Plus  </label>
 									<input class="text-input large-input" type="text" style="color:black" id="large-input" name="gplus_field" value="{gplus}" />
-								</p>                                
+								</p>  
+
+								</br>      
+								<p>
+									<label> Linkedin  </label>
+									<input class="text-input large-input" type="text" style="color:black" id="large-input" name="linkedin_field" value="{linkedin}" />
+								</p>  
+
+								</br>      
+								<p>
+									<label> pinterest  </label>
+									<input class="text-input large-input" type="text" style="color:black" id="large-input" name="pinterest_field" value="{pinterest}" />
+								</p>  																                              
                                 
 								</br>
 								<p>

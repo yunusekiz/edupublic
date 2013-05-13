@@ -1,12 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class contact extends CI_Controller {
-	
-	protected $data;
 
-	protected $base_data;
-
-	protected $row_data;
+	protected $parser_data;
 	
 	public function index()
 	{
@@ -25,42 +21,38 @@ class contact extends CI_Controller {
 			echo "<meta http-equiv=\"refresh\" content=\"0; url=../../login\">";
 			die();
 		}
+		$base = base_url();
+		$this->parser_data = array('base' => $base);
 		
 		$this->load->model('contact_model');
-		
-		$this->base_data = base_url();
-		
-		$base = base_url();
-		$this->row_data = $this->contact_model->getContactRowAsArray();
-		
-		$address_column		= $this->row_data['address'];
-		$phone_column		= $this->row_data['phone'];
-		$fax_column			= $this->row_data['fax'];
-		$email_column		= $this->row_data['email'];
-		$facebook_column	= $this->row_data['facebook'];
-		$twitter_column		= $this->row_data['twitter'];
-		$gplus_column		= $this->row_data['gplus'];
-		
-		$this->data = array(
-							'base'		=> $base,
-							'address'	=> $address_column,
-							'phone'		=> $phone_column,	
-							'fax'		=> $fax_column,
-							'email'		=> $email_column,
-							'facebook'	=> $facebook_column,
-							'twitter'	=> $twitter_column,
-							'gplus'		=> $gplus_column
-							);
-		
+		$raw_data = $this->contact_model->readRow('1');	// admin panelinin arayüzü için gerekli datayı raw olarak alır
+		$this->rawDataKiller($raw_data, $this->parser_data); // raw haldeki datayı tek boyutlu bir array olarak parser_data değişkenine atar
+
+		$this->load->library('jquery_notification_library'); // jquery notification kütüphanesini çağırır
+		$this->jquery_notification_library->setParserData($this->parser_data);
+	}
+
+	protected function rawDataKiller($raw_data, &$output_data) // raw halindeki datayı tek boyutlu array haline getiren metod
+	{
+		foreach ($raw_data as $middle_data) 
+		{
+			foreach ($middle_data as $key => $value) 
+			{
+				$output_data[$key] = $value;
+			}
+		}
+		return $output_data;		
 	}
 	
 	public function editContact()
 	{
 		// admin panelinin ilgili view lerini yükler
-		$this->parser->parse('backend_views/admin_header_view',$this->data);
-		$this->parser->parse('backend_views/admin_main_view',$this->data);
-		$this->parser->parse('backend_views/contact_view',$this->data);
-		$this->parser->parse('backend_views/admin_footer_view',$this->data);
+		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
+		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
+		$this->parser->parse('backend_views/contact_view',$this->parser_data);
+		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);
+	/*	print_r($this->parser_data);*/
+
 	}
 	
 	public function controlContact()
@@ -72,65 +64,34 @@ class contact extends CI_Controller {
 		$facebook_field	= $this->input->post('facebook_field');
 		$twitter_field	= $this->input->post('twitter_field');
 		$gplus_field	= $this->input->post('gplus_field');
+		$linkedin_field = $this->input->post('linkedin_field');
+		$pinterest_field = $this->input->post('pinterest_field');
 		/*$textt			= $this->input->post('textt');*/
 		
 		if(($address_field == '') || ($phone_field == '') || ($fax_field == '') || ($email_field == '') ||
-		  ($facebook_field == '') || ($twitter_field == '') || ($gplus_field == ''))
+		  ($facebook_field == '') || ($twitter_field == ''))
 		{
 			$message = 'Lütfen Boş Alan Bırakmayın';
-			$this->errorMessage($message);
-		
-		}
-		
-		$update = $this->contact_model->updateContact($address_field, $phone_field, $fax_field, $email_field, $facebook_field, $twitter_field, $gplus_field);
-		
-		if($update == TRUE)
-		{
-			$message = 'İletişim Bilgileri Başrıyla Değiştirildi';
-			$this->successMessage($message);
+			$this->jquery_notification_library->errorMessage($message, '../contact/editContact');
 		}
 		else
 		{
-			$message =  ' Güncelleme İşlemi Başarısız Oldu';
-			$this->errorMessage($message);
+			$update = $this->contact_model->updateRow('1',$address_field, null, $fax_field, $email_field, $facebook_field, $twitter_field, $gplus_field, $linkedin_field, $pinterest_field);
+			if($update == TRUE)
+			{
+				$message = 'İletişim Bilgileri Başarıyla Değiştirildi';
+				$this->jquery_notification_library->successMessage($message, '../contact/editContact');
+			}
+			else
+			{
+				$message =  'Güncelleme İşlemi Başarısız Oldu';
+				$this->jquery_notification_library->errorMessage($message, '../contact/editContact');
+			}			
 		}
+
 			
-		
 	}
 
-
-
-	public function errorMessage($message)
-	{
-		$this->parser_data = array(
-									'base' 				=> $this->base_data,
-									'error_message'		=> $message
-								  );
-
-		// admin panelinin ilgili view lerini yükler
-		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
-		$this->parser->parse('backend_views/error_view',$this->parser_data);
-		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
-		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);
-		echo "<meta http-equiv=\"refresh\" content=\"3; url=../contact/editContact\">";	
-
-	}
-
-	public function successMessage($message)
-	{
-		$this->parser_data = array(
-									'base' 				=> $this->base_data,
-									'success_message'	=> $message
-								  );
-
-		// admin panelinin ilgili view lerini yükler
-		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
-		$this->parser->parse('backend_views/success_view',$this->parser_data);
-		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
-		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);
-		echo "<meta http-equiv=\"refresh\" content=\"4; url=../contact/editContact\">";	
-
-	}
 
 
 

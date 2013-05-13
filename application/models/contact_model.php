@@ -1,69 +1,54 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class contact_model extends CI_Model {
-	
-	public function getContactRowAsArray()
-	{
-		$query = $this->db->select('*')->from('contact')->where('id',1)->get();
-		
-		if($query->num_rows()>0)
-		{
-			$row_array = array(
-								'address'	=> $query->row()->address,
-								'phone'		=> $query->row()->phone,
-								'fax'		=> $query->row()->fax,
-								'email'		=> $query->row()->email,
-								'facebook'	=> $query->row()->facebook,
-								'twitter'	=> $query->row()->twitter,
-								'gplus'		=> $query->row()->gplus
-							  );
-			return $row_array;				  
-		}
-		else
-		{
-			return FALSE;
-		}
-		
-	}
 
-	public function getContactRowForView()
-	{
-		$query = $this->db->select('*')->from('contact_view_alias')->where('id',1)->get();
-		if($query->num_rows()>0)
-		{
-			$result = $query->result_array();
-			return $result;
-		}
-		else
-		{
-			return FALSE;
-		}
-	}
-	
-	
-	public function updateContact($address, $phone, $fax, $email, $facebook, $twitter, $gplus)
-	{
-		$data = array(
+	public function __construct()
+    {
+        parent::__construct();
+
+        $this->load->library('model_killer_library');
+        $this->model_killer_library->setTableName('contact');
+        $this->model_killer_library->setNameOfIdColumn('id');
+    }
+
+    public function insertRow($address, $phone, $fax, $email, $facebook, $twitter, $gplus, $linkedin, $pinterest)
+    {
+		$insert_data = array(
 						'address' 	=> $address,
 						'phone'		=> $phone,
 						'fax'		=> $fax,
 						'email'		=> $email,
 						'facebook'	=> $facebook,
 						'twitter'	=> $twitter,
-						'gplus'		=> $gplus
+						'gplus'		=> $gplus,
+						'linkedin'	=> $linkedin,
+						'pinterest'	=> $pinterest
+					 );
+
+		$this->model_killer_library->insertNewRow($insert_data);    	
+    }	
+	
+	public function readRow($record_id = NULL)
+	{
+		return $this->model_killer_library->readRow($record_id);
+	}
+	
+	
+	public function updateRow($id ,$address, $phone, $fax, $email, $facebook, $twitter, $gplus, $linkedin, $pinterest)
+	{
+		$update_data = array(
+						'address' 	=> $address,
+						'phone'		=> $phone,
+						'fax'		=> $fax,
+						'email'		=> $email,
+						'facebook'	=> $facebook,
+						'twitter'	=> $twitter,
+						'gplus'		=> $gplus,
+						'linkedin'	=> $linkedin,
+						'pinterest'	=> $pinterest
 					 );
 		
-		$query = $this->db->where('id',1);
-		$query = $this->db->update('contact',$data);
-		
-		if($query)
-		{
-			return TRUE;
-		}
-		else
-		{
-			return FALSE;
-		}			
+		return $this->model_killer_library->updateRow($id, $update_data);			
 					 
 	}
 

@@ -37,20 +37,49 @@
 						<li><a href="{base}backend/reference/allReferences" class="{edit_ref_current}">Dİl Okulu Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
 						<li><a href="{base}backend/reference/addCategory" class="{edit_ref_current}">Ülke Ekle </a></li>
 						<li><a href="{base}backend/reference/allCategories" class="{edit_ref_current}">Ülke Düzenle / Sil</a></li>
-						<li><a href="{base}backend/reference/deleteCategory" class="{edit_ref_current}">Ülke Sil</a></li>
 					</ul>
-				</li>			
-				
+				</li>
 
-				<li>
-					<a href="#" class="nav-top-item {news_current_nav}">
-						Haberler
+				<li> 
+					<a href="#" class="nav-top-item {ref_current_nav}"> <!-- Add the class "current" to current menu item -->
+					Vizeler
 					</a>
 					<ul>
-						<li><a href="{base}backend/news/addNews" class="{add_news_current}">Haber Ekle</a></li>
-						<li><a href="{base}backend/news/allNews" class="{edit_news_current}">Haberleri Düzenle</a></li>
+						<li><a href="{base}backend/reference/addReference" class="{add_ref_current}">Vize Ekle</a></li>
+						<li><a href="{base}backend/reference/allReferences" class="{edit_ref_current}">Vize Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
 					</ul>
-				</li>                  
+				</li>
+
+
+				<li> 
+					<a href="#" class="nav-top-item {ref_current_nav}"> <!-- Add the class "current" to current menu item -->
+					Bildirimler
+					</a>
+					<ul>
+						<li><a href="{base}backend/reference/addReference" class="{add_ref_current}">Bildirim Ekle</a></li>
+						<li><a href="{base}backend/reference/allReferences" class="{edit_ref_current}">Bildirim Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
+					</ul>
+				</li>
+
+				<li> 
+					<a href="#" class="nav-top-item {ref_current_nav}"> <!-- Add the class "current" to current menu item -->
+					Ekibimiz
+					</a>
+					<ul>
+						<li><a href="{base}backend/ourTeam/addTeamMember" class="{add_ref_current}">Ekip Üyesi Ekle</a></li>
+						<li><a href="{base}backend/reference/allReferences" class="{edit_ref_current}">Ekip Üyesi Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
+					</ul>
+				</li>																		
+				
+
+				<li> 
+					<a href="#" class="nav-top-item {ref_current_nav}"> <!-- Add the class "current" to current menu item -->
+					İletisim
+					</a>
+					<ul>
+						<li><a href="{base}backend/contact/editContact" class="{add_ref_current}">İletisim Bilgilerini Düzenle</a></li>
+					</ul>
+				</li>	                
 				
 			</ul> <!-- End #main-nav -->
 			

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 16 Nis 2013, 20:17:33
+-- Üretim Zamanı: 13 May 2013, 12:14:11
 -- Sunucu sürümü: 5.5.25a
 -- PHP Sürümü: 5.4.4
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `email` text NOT NULL,
   `pass` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Tablo döküm verisi `admin`
@@ -50,14 +50,22 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `address` text NOT NULL,
   `phone` text NOT NULL,
+  `fax` text,
   `email` text NOT NULL,
   `facebook` text NOT NULL,
   `twitter` text NOT NULL,
-  `gplus` text NOT NULL,
-  `linkedin` text NOT NULL,
-  `pinterest` text NOT NULL,
+  `gplus` text,
+  `linkedin` text,
+  `pinterest` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Tablo döküm verisi `contact`
+--
+
+INSERT INTO `contact` (`id`, `address`, `phone`, `fax`, `email`, `facebook`, `twitter`, `gplus`, `linkedin`, `pinterest`) VALUES
+(1, 'ornek adres', 'ornek telefon', 'ornek faks', 'ornek email', 'ornek face', 'ornek twit', 'ornek gplus', 'ornek linkedin', 'ornek pinterest');
 
 -- --------------------------------------------------------
 
@@ -137,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `team` (
   `t_mem_twitter` text NOT NULL,
   `t_mem_linkedin` text NOT NULL,
   PRIMARY KEY (`t_mem_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 -- --------------------------------------------------------
 
@@ -148,12 +156,29 @@ CREATE TABLE IF NOT EXISTS `team` (
 CREATE TABLE IF NOT EXISTS `team_photo` (
   `t_mem_photo_id` int(11) NOT NULL AUTO_INCREMENT,
   `t_mem_id` int(11) NOT NULL,
-  `t_mem_thumb_photo` text NOT NULL,
   `t_mem_big_photo` text NOT NULL,
+  `t_mem_thumb_photo` text NOT NULL,
   PRIMARY KEY (`t_mem_photo_id`),
   KEY `t_mem_id` (`t_mem_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı durumu `view_table_of_team`
+--
+CREATE TABLE IF NOT EXISTS `view_table_of_team` (
+`t_mem_id` int(11)
+,`t_mem_name` text
+,`t_mem_surname` text
+,`t_mem_position_title` text
+,`t_mem_position_detail` text
+,`t_mem_facebook` text
+,`t_mem_twitter` text
+,`t_mem_linkedin` text
+,`t_mem_big_photo` text
+,`t_mem_thumb_photo` text
+);
 -- --------------------------------------------------------
 
 --
@@ -182,6 +207,15 @@ CREATE TABLE IF NOT EXISTS `visa_photo` (
   PRIMARY KEY (`visa_photo_id`),
   KEY `visa_id` (`visa_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı `view_table_of_team`
+--
+DROP TABLE IF EXISTS `view_table_of_team`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_table_of_team` AS select `team`.`t_mem_id` AS `t_mem_id`,`team`.`t_mem_name` AS `t_mem_name`,`team`.`t_mem_surname` AS `t_mem_surname`,`team`.`t_mem_position_title` AS `t_mem_position_title`,`team`.`t_mem_position_detail` AS `t_mem_position_detail`,`team`.`t_mem_facebook` AS `t_mem_facebook`,`team`.`t_mem_twitter` AS `t_mem_twitter`,`team`.`t_mem_linkedin` AS `t_mem_linkedin`,`team_photo`.`t_mem_big_photo` AS `t_mem_big_photo`,`team_photo`.`t_mem_thumb_photo` AS `t_mem_thumb_photo` from (`team` join `team_photo`) where (`team`.`t_mem_id` = `team_photo`.`t_mem_id`);
 
 --
 -- Dökümü yapılmış tablolar için kısıtlamalar

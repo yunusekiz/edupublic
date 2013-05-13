@@ -21,8 +21,12 @@ class about_model extends CI_Model {
 	
 	
 	
-	public function getAboutUsRowForView()
+	public function getAboutUsRow($id = NULL)
 	{
+		if ($id == NULL) 
+		{
+			# code...
+		}
 		$query = $this->db->select('*')->from('about_us_view_alias')->where('id',1)->get();
 		if($query->num_rows()>0)
 		{
