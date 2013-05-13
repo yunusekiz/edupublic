@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Anamakine: localhost
--- Üretim Zamanı: 13 May 2013, 12:14:11
--- Sunucu sürümü: 5.5.25a
--- PHP Sürümü: 5.4.4
+-- Anamakine: 127.0.0.1
+-- Üretim Zamanı: 13 May 2013, 21:03:03
+-- Sunucu sürümü: 5.5.27
+-- PHP Sürümü: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `fb_country` text NOT NULL,
   `fb_lang_school` text NOT NULL,
   PRIMARY KEY (`fb_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -93,11 +93,11 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 CREATE TABLE IF NOT EXISTS `feedback_photo` (
   `fb_photo_id` int(11) NOT NULL AUTO_INCREMENT,
   `fb_id` int(11) NOT NULL,
-  `fb_thumb_photo` text NOT NULL,
   `fb_big_photo` text NOT NULL,
+  `fb_thumb_photo` text NOT NULL,
   PRIMARY KEY (`fb_photo_id`),
   KEY `fb_id` (`fb_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `team` (
   `t_mem_twitter` text NOT NULL,
   `t_mem_linkedin` text NOT NULL,
   PRIMARY KEY (`t_mem_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 -- --------------------------------------------------------
 
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `team_photo` (
   `t_mem_thumb_photo` text NOT NULL,
   PRIMARY KEY (`t_mem_photo_id`),
   KEY `t_mem_id` (`t_mem_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -202,8 +202,8 @@ CREATE TABLE IF NOT EXISTS `visa` (
 CREATE TABLE IF NOT EXISTS `visa_photo` (
   `visa_photo_id` int(11) NOT NULL AUTO_INCREMENT,
   `visa_id` int(11) NOT NULL,
-  `visa_photo_thumb` text NOT NULL,
-  `visa_photo_big` text NOT NULL,
+  `visa_big_photo` text NOT NULL,
+  `visa_thumb_photo` text NOT NULL,
   PRIMARY KEY (`visa_photo_id`),
   KEY `visa_id` (`visa_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

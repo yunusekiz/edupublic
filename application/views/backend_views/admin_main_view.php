@@ -45,7 +45,7 @@
 					Vizeler
 					</a>
 					<ul>
-						<li><a href="{base}backend/reference/addReference" class="{add_ref_current}">Vize Ekle</a></li>
+						<li><a href="{base}backend/visa/addVisa" class="{add_ref_current}">Vize Ekle</a></li>
 						<li><a href="{base}backend/reference/allReferences" class="{edit_ref_current}">Vize Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
 					</ul>
 				</li>
@@ -56,7 +56,7 @@
 					Bildirimler
 					</a>
 					<ul>
-						<li><a href="{base}backend/reference/addReference" class="{add_ref_current}">Bildirim Ekle</a></li>
+						<li><a href="{base}backend/feedback/addFeedback" class="{add_ref_current}">Bildirim Ekle</a></li>
 						<li><a href="{base}backend/reference/allReferences" class="{edit_ref_current}">Bildirim Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
 					</ul>
 				</li>
