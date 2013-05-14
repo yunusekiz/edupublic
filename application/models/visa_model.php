@@ -16,7 +16,7 @@ class visa_model extends CI_Model {
     }
 
 
-	public function insertNewVisaDetail($visa_title, $visa_detail, $visa_css_filter)
+	public function insertNewVisaDetail($visa_title, $visa_detail, $visa_css_filter = NULL)
 	{
 		$insert_data = array(
 								'visa_title' 		=> $visa_title,
@@ -45,7 +45,7 @@ class visa_model extends CI_Model {
 		return $this->model_killer_library->readRow($record_id);
 	}
 
-	public function updateVisaDetail($visa_id, $visa_title, $visa_detail, $visa_css_filter)
+	public function updateVisaDetail($visa_id, $visa_title, $visa_detail, $visa_css_filter = NULL)
 	{
 		$update_data = array(
 								'visa_title' 		=> $visa_title,

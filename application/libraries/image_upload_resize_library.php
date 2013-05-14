@@ -139,7 +139,7 @@ class image_upload_resize_library{
 			else
 			{
 				if ($this->display_errors == TRUE)
-					echo '<center><h3>'.$this->upload->display_errors('<p>', '</p>').'</h3></center>';
+					echo '<center><h3>'.$this->CI->upload->display_errors('<p>', '</p>').'</h3></center>';
 				else
 					return FALSE;
 			}
@@ -148,7 +148,7 @@ class image_upload_resize_library{
 		else
 		{
 			if ($this->display_errors == TRUE)
-				echo '<center><h3> Upload Icın Dosya Secilmedi <br>'.$this->upload->display_errors('<p>', '</p>').'</h3></center>';
+				echo '<center><h3> Upload Icın Dosya Secilmedi <br>'.$this->CI->upload->display_errors('<p>', '</p>').'</h3></center>';
 			else
 				return FALSE;
 		}

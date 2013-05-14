@@ -42,9 +42,11 @@
 
 								<p>
 									<label>Bildirim  --Detay-- </label>
-									<input class="text-input large-input" type="text"
+<!-- 									<input class="text-input large-input" type="text"
 									style="color:#000;" id="large-input" name="fb_detail_field" 
-									/>
+									/> -->
+									<textarea class="text-input textarea" id="textarea" name="fb_detail_field"
+									 cols="79" rows="10" style="color:#000;"></textarea>										
 								</p><br />
 							
 								<hr><br />

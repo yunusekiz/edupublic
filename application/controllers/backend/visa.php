@@ -76,28 +76,22 @@ class visa extends CI_Controller {
 				$big_img_data_for_db	= $this->image_upload_resize_library->getSizedBigImgNameForDB();
 				$thumb_img_data_for_db	= $this->image_upload_resize_library->getSizedThumbImgNameForDB();
 
-				$insert_item_detail_to_db = $this->visa_model->insertNewTeamMemDetail(
-																							$t_mem_name_field,
-																							$t_mem_surname_field,
-																							$t_mem_position_title_field,
-																							$t_mem_position_detail_field,
-																							$t_mem_facebook_field,
-																							$t_mem_twitter_field,
-																							$t_mem_linkedin_field
-																						);
+				$insert_item_detail_to_db = $this->visa_model->insertNewVisaDetail( $visa_title_field,
+																				   	$visa_detail_field
+																				  );
 				if ($insert_item_detail_to_db==TRUE) // item detail ler db ye insert edilmişse, item photo bilgilerini db ye insert eder 
 				{
-					$insert_item_photo_to_db = $this->our_team_model->insertNewTeamMemPhoto($big_img_data_for_db, $thumb_img_data_for_db);
+					$insert_item_photo_to_db = $this->visa_model->insertNewVisaPhoto($big_img_data_for_db, $thumb_img_data_for_db);
 					if ($insert_item_photo_to_db==TRUE) 
 					{
 						$message = 'Tebrikler! Kayıt Başarılı.';
-						$return_path = 'addTeamMember';
+						$return_path = 'addVisa';
 						$this->jquery_notification_library->successMessage($message, $return_path,2);						
 					}
 					else
 					{
 						$message = 'Fotoğraf Bilgileri Veritabanına Kaydedilemedi';
-						$return_path = 'addTeamMember';
+						$return_path = 'addVisa';
 						$this->jquery_notification_library->errorMessage($message, $return_path,2);								
 					}
 
@@ -105,7 +99,7 @@ class visa extends CI_Controller {
 				else
 				{
 					$message = 'Form Bilgileri Veritabanına Kaydedilemedi';
-					$return_path = 'addTeamMember';
+					$return_path = 'addVisa';
 					$this->jquery_notification_library->errorMessage($message, $return_path,2);					
 				}
 
@@ -116,7 +110,7 @@ class visa extends CI_Controller {
 		else
 		{
 			$message = 'Lütfen Boş Alan Bırakmayın';
-			$return_path = 'addTeamMember';
+			$return_path = 'addVisa';
 			$this->jquery_notification_library->errorMessage($message, $return_path,0.2);
 		}
 
