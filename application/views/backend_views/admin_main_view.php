@@ -22,8 +22,10 @@
 						Anasayfa Düzeni
 					</a>
 					<ul>
-						<li><a href="{base}backend/slider/editBigSlider" class="{big_slider_current}">Anasayfa Slider Düzenle</a></li>
+						<li><a href="{base}backend/slider/editPromoSlider" class="{big_slider_current}">Promosyon Sliderı Düzenle</a></li>
+						<li><a href="{base}backend/slider/editSchoolSlider" class="{big_slider_current}">Dil Okulu Sliderı Düzenle</a></li>						
 					</ul>
+
 				</li>
 							
 				

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 3.5.2
 -- http://www.phpmyadmin.net
 --
--- Anamakine: 127.0.0.1
--- Üretim Zamanı: 13 May 2013, 21:03:03
--- Sunucu sürümü: 5.5.27
--- PHP Sürümü: 5.4.7
+-- Anamakine: localhost
+-- Üretim Zamanı: 17 May 2013, 14:42:39
+-- Sunucu sürümü: 5.5.25a
+-- PHP Sürümü: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -70,6 +70,18 @@ INSERT INTO `contact` (`id`, `address`, `phone`, `fax`, `email`, `facebook`, `tw
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `country`
+--
+
+CREATE TABLE IF NOT EXISTS `country` (
+  `country_id` int(11) NOT NULL AUTO_INCREMENT,
+  `country_name` text NOT NULL,
+  PRIMARY KEY (`country_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `feedback`
 --
 
@@ -82,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `fb_country` text NOT NULL,
   `fb_lang_school` text NOT NULL,
   PRIMARY KEY (`fb_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -97,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `feedback_photo` (
   `fb_thumb_photo` text NOT NULL,
   PRIMARY KEY (`fb_photo_id`),
   KEY `fb_id` (`fb_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -107,11 +119,11 @@ CREATE TABLE IF NOT EXISTS `feedback_photo` (
 
 CREATE TABLE IF NOT EXISTS `language_school` (
   `school_id` int(11) NOT NULL AUTO_INCREMENT,
-  `school_country` text NOT NULL,
+  `country_id` int(11) NOT NULL,
   `school_name` text NOT NULL,
-  `school_detail` text NOT NULL,
-  `school_css_filter` text NOT NULL,
-  PRIMARY KEY (`school_id`)
+  `css_filter` text,
+  PRIMARY KEY (`school_id`),
+  KEY `country_id` (`country_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -123,8 +135,8 @@ CREATE TABLE IF NOT EXISTS `language_school` (
 CREATE TABLE IF NOT EXISTS `language_school_photo` (
   `school_photo_id` int(11) NOT NULL AUTO_INCREMENT,
   `school_id` int(11) NOT NULL,
-  `school_thumb_photo` text NOT NULL,
   `school_big_photo` text NOT NULL,
+  `school_thumb_photo` text NOT NULL,
   PRIMARY KEY (`school_photo_id`),
   KEY `school_id` (`school_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -145,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `team` (
   `t_mem_twitter` text NOT NULL,
   `t_mem_linkedin` text NOT NULL,
   PRIMARY KEY (`t_mem_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -160,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `team_photo` (
   `t_mem_thumb_photo` text NOT NULL,
   PRIMARY KEY (`t_mem_photo_id`),
   KEY `t_mem_id` (`t_mem_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -189,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `visa` (
   `visa_id` int(11) NOT NULL AUTO_INCREMENT,
   `visa_title` text NOT NULL,
   `visa_detail` text NOT NULL,
-  `visa_css_filter` text NOT NULL,
+  `visa_css_filter` text,
   PRIMARY KEY (`visa_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -226,6 +238,12 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 ALTER TABLE `feedback_photo`
   ADD CONSTRAINT `feedback_photo_ibfk_1` FOREIGN KEY (`fb_id`) REFERENCES `feedback` (`fb_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Tablo kısıtlamaları `language_school`
+--
+ALTER TABLE `language_school`
+  ADD CONSTRAINT `language_school_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `country` (`country_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Tablo kısıtlamaları `language_school_photo`
