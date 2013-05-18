@@ -35,9 +35,9 @@
 					Dil Okulları
 					</a>
 					<ul>
-						<li><a href="{base}backend/reference/addReference" class="{add_ref_current}">Dil Okulu Ekle</a></li>
+						<li><a href="{base}backend/school/addSchool" class="{add_ref_current}">Dil Okulu Ekle</a></li>
 						<li><a href="{base}backend/reference/allReferences" class="{edit_ref_current}">Dİl Okulu Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
-						<li><a href="{base}backend/reference/addCategory" class="{edit_ref_current}">Ülke Ekle </a></li>
+						<li><a href="{base}backend/country/addCountry" class="{edit_ref_current}">Ülke Ekle </a></li>
 						<li><a href="{base}backend/reference/allCategories" class="{edit_ref_current}">Ülke Düzenle / Sil</a></li>
 					</ul>
 				</li>

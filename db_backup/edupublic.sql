@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 17 May 2013, 14:42:39
+-- Üretim Zamanı: 18 May 2013, 23:57:24
 -- Sunucu sürümü: 5.5.25a
 -- PHP Sürümü: 5.4.4
 
@@ -76,8 +76,19 @@ INSERT INTO `contact` (`id`, `address`, `phone`, `fax`, `email`, `facebook`, `tw
 CREATE TABLE IF NOT EXISTS `country` (
   `country_id` int(11) NOT NULL AUTO_INCREMENT,
   `country_name` text NOT NULL,
+  `css_filter` text,
   PRIMARY KEY (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Tablo döküm verisi `country`
+--
+
+INSERT INTO `country` (`country_id`, `country_name`, `css_filter`) VALUES
+(5, 'amerika birleşik devletleri', 'amerika-birlesik-devletleri'),
+(6, 'arjantin', 'arjantin'),
+(7, 'fransa', 'fransa'),
+(8, 'birleşik krallık', 'birlesik-krallik');
 
 -- --------------------------------------------------------
 
@@ -121,10 +132,12 @@ CREATE TABLE IF NOT EXISTS `language_school` (
   `school_id` int(11) NOT NULL AUTO_INCREMENT,
   `country_id` int(11) NOT NULL,
   `school_name` text NOT NULL,
+  `school_summary` text NOT NULL,
+  `school_detail` text NOT NULL,
   `css_filter` text,
   PRIMARY KEY (`school_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -139,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `language_school_photo` (
   `school_thumb_photo` text NOT NULL,
   PRIMARY KEY (`school_photo_id`),
   KEY `school_id` (`school_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 

@@ -142,4 +142,10 @@ class model_killer_library extends CI_Model {
 	}
 
 
+	public function __destruct()
+	{
+		unset($this->table_name);
+	}
+
+
 }
