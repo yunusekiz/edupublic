@@ -34,19 +34,25 @@ class slider extends CI_Controller {
 
 	}
 
-	public function addFeedback()
+	public function addSchoolSlider()
 	{
+		$this->load->model('school_model');
+		if ($this->school_model->readRow() == NULL)
+			$this->parser_data['schools'] = array();
+		else
+			$this->parser_data['schools'] = $this->school_model->readRow();
+
 		// admin panelinin ilgili view lerini yükler
 		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
 		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
-		$this->parser->parse('backend_views/add_feedback_view',$this->parser_data);
+		$this->parser->parse('backend_views/add_school_slider_view',$this->parser_data);
 		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);
 	}
 
 
-	public function controlFeedback()
+	public function controlSchoolSlider()
 	{
-		$fb_student_name_field 			= $this->input->post('fb_student_name_field');
+		$school_field 					= $this->input->post('school_field');
 		$fb_student_surname_field		= $this->input->post('fb_student_surname_field');
 		$fb_title_field					= $this->input->post('fb_title_field');
 		$fb_detail_field				= $this->input->post('fb_detail_field');
@@ -54,7 +60,7 @@ class slider extends CI_Controller {
 		$fb_lang_school_field			= $this->input->post('fb_lang_school_field');
 
 
-		if (($fb_student_name_field!='')&&($fb_student_surname_field!='')&&($fb_title_field!='')&&($fb_detail_field!='')
+		if (($school_field!=0)&&($fb_student_surname_field!='')&&($fb_title_field!='')&&($fb_detail_field!='')
 			&&($fb_country_field!='')&&($fb_lang_school_field!='')) 
 		{
 			$image_name = filterForeignChars($fb_student_name_field);

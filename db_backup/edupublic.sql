@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 18 May 2013, 23:57:24
+-- Üretim Zamanı: 19 May 2013, 15:23:00
 -- Sunucu sürümü: 5.5.25a
 -- PHP Sürümü: 5.4.4
 
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `language_school` (
   `css_filter` text,
   PRIMARY KEY (`school_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -152,7 +152,36 @@ CREATE TABLE IF NOT EXISTS `language_school_photo` (
   `school_thumb_photo` text NOT NULL,
   PRIMARY KEY (`school_photo_id`),
   KEY `school_id` (`school_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `school_slider`
+--
+
+CREATE TABLE IF NOT EXISTS `school_slider` (
+  `slider_id` int(11) NOT NULL AUTO_INCREMENT,
+  `school_id` int(11) NOT NULL,
+  `slider_caption` text NOT NULL,
+  PRIMARY KEY (`slider_id`),
+  KEY `school_id` (`school_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `school_slider_photo`
+--
+
+CREATE TABLE IF NOT EXISTS `school_slider_photo` (
+  `slider_photo_id` int(11) NOT NULL AUTO_INCREMENT,
+  `slider_id` int(11) NOT NULL,
+  `slider_big_photo` text NOT NULL,
+  `slider_thumb_photo` text NOT NULL,
+  PRIMARY KEY (`slider_photo_id`),
+  KEY `slider_id` (`slider_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -263,6 +292,18 @@ ALTER TABLE `language_school`
 --
 ALTER TABLE `language_school_photo`
   ADD CONSTRAINT `language_school_photo_ibfk_1` FOREIGN KEY (`school_id`) REFERENCES `language_school` (`school_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Tablo kısıtlamaları `school_slider`
+--
+ALTER TABLE `school_slider`
+  ADD CONSTRAINT `school_slider_ibfk_1` FOREIGN KEY (`school_id`) REFERENCES `language_school` (`school_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Tablo kısıtlamaları `school_slider_photo`
+--
+ALTER TABLE `school_slider_photo`
+  ADD CONSTRAINT `school_slider_photo_ibfk_1` FOREIGN KEY (`slider_id`) REFERENCES `school_slider` (`slider_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Tablo kısıtlamaları `team_photo`

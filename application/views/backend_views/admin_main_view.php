@@ -22,8 +22,10 @@
 						Anasayfa Düzeni
 					</a>
 					<ul>
-						<li><a href="{base}backend/slider/editPromoSlider" class="{big_slider_current}">Promosyon Sliderı Düzenle</a></li>
-						<li><a href="{base}backend/slider/editSchoolSlider" class="{big_slider_current}">Dil Okulu Sliderı Düzenle</a></li>						
+						<li><a href="{base}backend/slider/addPromoSlider" class="{big_slider_current}">Promosyon Sliderı Ekle</a></li>
+						<li><a href="{base}backend/slider/addSchoolSlider" class="{big_slider_current}">Dil Okulu Sliderı Ekle</a></li>
+						<li><a href="{base}backend/slider/editPromoSlider" class="{big_slider_current}">Promosyon Sliderı Düzenle/Sil</a></li>
+						<li><a href="{base}backend/slider/editSchoolSlider" class="{big_slider_current}">Dil Okulu Sliderı Düzenle/Sil</a></li>												
 					</ul>
 
 				</li>
