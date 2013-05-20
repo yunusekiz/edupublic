@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 19 May 2013, 15:23:00
+-- Üretim Zamanı: 20 May 2013, 16:08:38
 -- Sunucu sürümü: 5.5.25a
 -- PHP Sürümü: 5.4.4
 
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `language_school` (
   `css_filter` text,
   PRIMARY KEY (`school_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -152,7 +152,21 @@ CREATE TABLE IF NOT EXISTS `language_school_photo` (
   `school_thumb_photo` text NOT NULL,
   PRIMARY KEY (`school_photo_id`),
   KEY `school_id` (`school_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `promo_slider`
+--
+
+CREATE TABLE IF NOT EXISTS `promo_slider` (
+  `slider_id` int(11) NOT NULL AUTO_INCREMENT,
+  `big_text` text NOT NULL,
+  `little_text_1` text NOT NULL,
+  `little_text_2` text NOT NULL,
+  PRIMARY KEY (`slider_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 

@@ -25,7 +25,6 @@ class slider extends CI_Controller {
 		}
 
 		$this->load->helper('filter_killer');
-		$this->load->model('slider_model');	
 		
 		$this->parser_data['base'] = base_url();
 
@@ -48,6 +47,55 @@ class slider extends CI_Controller {
 		$this->parser->parse('backend_views/add_school_slider_view',$this->parser_data);
 		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);
 	}
+
+
+	public function addPromoSlider()
+	{
+		// admin panelinin ilgili view lerini yükler
+		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
+		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
+		$this->parser->parse('backend_views/add_promo_slider_view',$this->parser_data);
+		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);
+	}
+
+	public function controlPromoSlider()
+	{
+		$big_text_field 		= $this->input->post('big_text_field');
+		$little_text_1_field 	= $this->input->post('little_text_1_field');
+		$little_text_2_field 	= $this->input->post('little_text_2_field');
+
+		if (($big_text_field!='') && ($little_text_1_field!='') && ($little_text_2_field!='')) 
+		{
+			$this->load->model('promo_slider_model');
+
+			$add_promo_slider = $this->promo_slider_model->insertNewPromoSlider(
+																				 	$big_text_field,
+																				 	$little_text_1_field,
+																				 	$little_text_2_field
+																				);
+			if ($add_promo_slider == TRUE) 
+			{
+				$message = 'Tebrikler! Kayıt Başarılı.';
+				$return_path = 'addPromoSlider';
+				$this->jquery_notification_library->successMessage($message, $return_path,2);				
+			}
+			else
+			{
+				$message = 'Form Bilgileri Veritabanına Kaydedilemedi';
+				$return_path = 'addPromoSlider';
+				$this->jquery_notification_library->errorMessage($message, $return_path,2);					
+			}
+
+
+		}
+		else
+		{
+			$message = 'Lütfen Boş Alan Bırakmayın';
+			$return_path = 'addPromoSlider';
+			$this->jquery_notification_library->errorMessage($message, $return_path,0.2);
+		}	
+
+	}	
 
 
 	public function controlSchoolSlider()
