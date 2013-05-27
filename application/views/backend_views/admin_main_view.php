@@ -71,7 +71,7 @@
 					</a>
 					<ul>
 						<li><a href="{base}backend/ourTeam/addTeamMember" class="{add_ref_current}">Ekip Üyesi Ekle</a></li>
-						<li><a href="{base}backend/reference/allReferences" class="{edit_ref_current}">Ekip Üyesi Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
+						<li><a href="{base}backend/ourTeam/allTeam" class="{edit_ref_current}">Ekip Üyesi Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
 					</ul>
 				</li>																		
 				

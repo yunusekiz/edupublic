@@ -12,7 +12,7 @@ class our_team_model extends CI_Model {
         $this->load->library('model_killer_library');
         $this->model_killer_library->setTableName('team');
         $this->model_killer_library->setNameOfIdColumn('t_mem_id');
-        //$this->model_killer_library->setViewTableName('view_table_of_team');
+        $this->model_killer_library->setViewTableName('team_view');
     }
 
 
@@ -32,10 +32,13 @@ class our_team_model extends CI_Model {
 		return $this->last_record_id = $this->model_killer_library->getLastRecordId();
 	}
 
-	public function insertNewTeamMemPhoto($t_mem_big_photo, $t_mem_thumb_photo)
+	public function insertNewTeamMemPhoto($t_mem_big_photo, $t_mem_thumb_photo, $parent_id = NULL)
 	{
+		if ($parent_id == NULL) 
+			$parent_id = $this->last_record_id;
+		
 		$insert_data = array(
-								't_mem_id'			=> $this->last_record_id,
+								't_mem_id'			=> $parent_id,
 								't_mem_big_photo'	=> $t_mem_big_photo,
 								't_mem_thumb_photo'	=> $t_mem_thumb_photo
 							);
@@ -67,7 +70,13 @@ class our_team_model extends CI_Model {
 
 	public function deleteRow($row_id)
 	{
-		$this->model_killer_library->deleteRow($row_id);
+		return $this->model_killer_library->deleteRow($row_id);
+	}
+
+
+	public function deleteImageFromDB($row_id)
+	{
+		return $this->model_killer_library->deleteRow($row_id, 't_mem_photo_id', 'team_photo');
 	}
 
 

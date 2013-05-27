@@ -37,22 +37,6 @@
 
 									<label><b style="font-size:16px;">Referans Tarihi : </b> </label>
 									<input class="text-input large-input" type="text" style="color:black" id="datepicker" name="reference_date_field" value="{tarih}" />
-						
-<!-- 									<label style="font-size:16px;"><b>Referans Tarihi :</b></label>
-									
-									</label>
-									<input name="reference_day" type="text" style="width:25px"  
-								 		maxlength="11" value="{day}" onfocus="if(this.beenchanged!=true){ this.value = ''}"
-										onblur="if(this.beenchanged!=true) { this.value='{day}' }" onchange="this.beenchanged = 
-										true;" placeholder="Gün" required="required" /> 						 
-									<input name="reference_month" type="text" style="width:24px" 
-								 		maxlength="11" value="{month}" onfocus="if(this.beenchanged!=true){ this.value = ''}"
-										onblur="if(this.beenchanged!=true) { this.value='{month}' }" onchange="this.beenchanged = 
-										true;" placeholder="Ay" required="required" /> 
-									<input name="reference_year" type="text" style="width:45px" 
-								 		maxlength="11" value="{year}" onfocus="if(this.beenchanged!=true){ this.value = ''}"
-										onblur="if(this.beenchanged!=true) { this.value='{year}' }" onchange="this.beenchanged = 
-										true;" placeholder="Yıl"  required="required" /> -->
 						</p><hr width="100%" style="margin-top:10px;" /><br /><br /><br />
 								
 								<p class="cocukdiv_image"><label><b style="font-size:16px;">Referans Resmi : </b> </label>

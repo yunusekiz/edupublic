@@ -131,14 +131,40 @@ class model_killer_library extends CI_Model {
 
 
 	// tablodan kayıt siler. hangi tablodan kayıt sileceğini class instance edilirken ki girilen parametrelerden bulur.
-	public function deleteRow($row_id)
+	public function deleteRow($row_id, $name_of_id_column = NULL, $table_name = NULL)
 	{
-		$query = $this->db->where($this->name_of_id_column, $row_id)->delete($this->table_name);
+		if (($name_of_id_column == NULL) && ($table_name == NULL)) 
+		{
+			$query = $this->db->where($this->name_of_id_column, $row_id)->delete($this->table_name);
 
-		if($this->db->affected_rows()>0)
-			return TRUE;
+			if($this->db->affected_rows()>0)
+				return TRUE;
+			else
+				return FALSE;
+		}
 		else
-			return FALSE;
+		{
+			$query = $this->db->where($name_of_id_column, $row_id)->delete($table_name);
+			
+			if($this->db->affected_rows()>0)
+				return TRUE;
+			else
+				return FALSE;			
+		}
+
+	}
+
+	public function getSpecificColumn($table_1, $table_2, $joint_id, $id)
+	{
+		$query = $this->db->select('*')->from($table_2)->join($table_1, "$table_1.$joint_id = $table_2.$joint_id")->where($table_2.'.'.$joint_id, $id)->get();
+		
+		if ($query->num_rows()>0)
+		{
+			$result_array = $query->result_array();
+			return $result_array[0];			
+		}
+		else
+			return NULL;
 	}
 
 
