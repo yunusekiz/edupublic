@@ -43,7 +43,7 @@
 									</td>
 
 									<td>
-										<a href="photoUploadForm/{t_mem_id}" title="Fotoğraf Yükle"><img src="{base}assets/backend_assets/images/icons/up_2.png" alt="Fotoğraf Yükle" /></a>
+										<a href="photoUploadForm/{t_mem_id}/{t_mem_photo_id}" title="Fotoğraf Yükle"><img src="{base}assets/backend_assets/images/icons/up_2.png" alt="Fotoğraf Yükle" /></a>
 									</td>
 
 									<td class="cocukdiv_image">

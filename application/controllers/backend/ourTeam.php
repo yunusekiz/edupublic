@@ -377,6 +377,7 @@ class ourTeam extends CI_Controller {
 			}
 			else
 				echo 'resim silinemedi';
+		}
 		elseif ($this->image_upload_resize_library->getUploadedFileClientName()!=NULL) 
 		{
 			$message = 'HATA:: Fotoğraf Seçilmedi!';
