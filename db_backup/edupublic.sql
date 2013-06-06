@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 20 May 2013, 16:08:38
+-- Üretim Zamanı: 06 Haz 2013, 10:31:32
 -- Sunucu sürümü: 5.5.25a
 -- PHP Sürümü: 5.4.4
 
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `fb_country` text NOT NULL,
   `fb_lang_school` text NOT NULL,
   PRIMARY KEY (`fb_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 -- --------------------------------------------------------
 
@@ -120,8 +120,25 @@ CREATE TABLE IF NOT EXISTS `feedback_photo` (
   `fb_thumb_photo` text NOT NULL,
   PRIMARY KEY (`fb_photo_id`),
   KEY `fb_id` (`fb_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı durumu `feedback_view`
+--
+CREATE TABLE IF NOT EXISTS `feedback_view` (
+`fb_id` int(11)
+,`fb_student_name` text
+,`fb_student_surname` text
+,`fb_title` text
+,`fb_detail` text
+,`fb_country` text
+,`fb_lang_school` text
+,`fb_photo_id` int(11)
+,`fb_big_photo` text
+,`fb_thumb_photo` text
+);
 -- --------------------------------------------------------
 
 --
@@ -137,7 +154,14 @@ CREATE TABLE IF NOT EXISTS `language_school` (
   `css_filter` text,
   PRIMARY KEY (`school_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Tablo döküm verisi `language_school`
+--
+
+INSERT INTO `language_school` (`school_id`, `country_id`, `school_name`, `school_summary`, `school_detail`, `css_filter`) VALUES
+(1, 5, 'amerikan dil enstitüsü', 'dsds									', 'dsds									', 'amerikan-dil-enstitusu');
 
 -- --------------------------------------------------------
 
@@ -152,8 +176,33 @@ CREATE TABLE IF NOT EXISTS `language_school_photo` (
   `school_thumb_photo` text NOT NULL,
   PRIMARY KEY (`school_photo_id`),
   KEY `school_id` (`school_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
+--
+-- Tablo döküm verisi `language_school_photo`
+--
+
+INSERT INTO `language_school_photo` (`school_photo_id`, `school_id`, `school_big_photo`, `school_thumb_photo`) VALUES
+(1, 1, 'assets/images/schools/amerikan-dil-enstitusu7243.jpg', 'assets/images/schools/thumb/amerikan-dil-enstitusu7243_thumb.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı durumu `language_school_view`
+--
+CREATE TABLE IF NOT EXISTS `language_school_view` (
+`school_id` int(11)
+,`school_name` text
+,`country_id` int(11)
+,`country_name` text
+,`school_summary` text
+,`school_detail` text
+,`school_css` text
+,`country_css` text
+,`school_photo_id` int(11)
+,`school_big_photo` text
+,`school_thumb_photo` text
+);
 -- --------------------------------------------------------
 
 --
@@ -166,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `promo_slider` (
   `little_text_1` text NOT NULL,
   `little_text_2` text NOT NULL,
   PRIMARY KEY (`slider_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -213,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `team` (
   `t_mem_twitter` text NOT NULL,
   `t_mem_linkedin` text NOT NULL,
   PRIMARY KEY (`t_mem_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
 
 -- --------------------------------------------------------
 
@@ -228,8 +277,26 @@ CREATE TABLE IF NOT EXISTS `team_photo` (
   `t_mem_thumb_photo` text NOT NULL,
   PRIMARY KEY (`t_mem_photo_id`),
   KEY `t_mem_id` (`t_mem_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı durumu `team_view`
+--
+CREATE TABLE IF NOT EXISTS `team_view` (
+`t_mem_id` int(11)
+,`t_mem_name` text
+,`t_mem_surname` text
+,`t_mem_position_title` text
+,`t_mem_position_detail` text
+,`t_mem_facebook` text
+,`t_mem_twitter` text
+,`t_mem_linkedin` text
+,`t_mem_photo_id` int(11)
+,`t_mem_big_photo` text
+,`t_mem_thumb_photo` text
+);
 -- --------------------------------------------------------
 
 --
@@ -259,7 +326,7 @@ CREATE TABLE IF NOT EXISTS `visa` (
   `visa_detail` text NOT NULL,
   `visa_css_filter` text,
   PRIMARY KEY (`visa_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 -- --------------------------------------------------------
 
@@ -274,7 +341,48 @@ CREATE TABLE IF NOT EXISTS `visa_photo` (
   `visa_thumb_photo` text NOT NULL,
   PRIMARY KEY (`visa_photo_id`),
   KEY `visa_id` (`visa_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı durumu `visa_view`
+--
+CREATE TABLE IF NOT EXISTS `visa_view` (
+`visa_id` int(11)
+,`visa_title` text
+,`visa_detail` text
+,`visa_css_filter` text
+,`visa_photo_id` int(11)
+,`visa_big_photo` text
+,`visa_thumb_photo` text
+);
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı `feedback_view`
+--
+DROP TABLE IF EXISTS `feedback_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `feedback_view` AS select `feedback`.`fb_id` AS `fb_id`,`feedback`.`fb_student_name` AS `fb_student_name`,`feedback`.`fb_student_surname` AS `fb_student_surname`,`feedback`.`fb_title` AS `fb_title`,`feedback`.`fb_detail` AS `fb_detail`,`feedback`.`fb_country` AS `fb_country`,`feedback`.`fb_lang_school` AS `fb_lang_school`,`feedback_photo`.`fb_photo_id` AS `fb_photo_id`,`feedback_photo`.`fb_big_photo` AS `fb_big_photo`,`feedback_photo`.`fb_thumb_photo` AS `fb_thumb_photo` from (`feedback` join `feedback_photo`) where (`feedback`.`fb_id` = `feedback_photo`.`fb_id`);
+
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı `language_school_view`
+--
+DROP TABLE IF EXISTS `language_school_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `language_school_view` AS select `language_school`.`school_id` AS `school_id`,`language_school`.`school_name` AS `school_name`,`country`.`country_id` AS `country_id`,`country`.`country_name` AS `country_name`,`language_school`.`school_summary` AS `school_summary`,`language_school`.`school_detail` AS `school_detail`,`language_school`.`css_filter` AS `school_css`,`country`.`css_filter` AS `country_css`,`language_school_photo`.`school_photo_id` AS `school_photo_id`,`language_school_photo`.`school_big_photo` AS `school_big_photo`,`language_school_photo`.`school_thumb_photo` AS `school_thumb_photo` from ((`country` join `language_school`) join `language_school_photo`) where ((`country`.`country_id` = `language_school`.`country_id`) and (`language_school`.`school_id` = `language_school_photo`.`school_id`));
+
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı `team_view`
+--
+DROP TABLE IF EXISTS `team_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `team_view` AS select `team`.`t_mem_id` AS `t_mem_id`,`team`.`t_mem_name` AS `t_mem_name`,`team`.`t_mem_surname` AS `t_mem_surname`,`team`.`t_mem_position_title` AS `t_mem_position_title`,`team`.`t_mem_position_detail` AS `t_mem_position_detail`,`team`.`t_mem_facebook` AS `t_mem_facebook`,`team`.`t_mem_twitter` AS `t_mem_twitter`,`team`.`t_mem_linkedin` AS `t_mem_linkedin`,`team_photo`.`t_mem_photo_id` AS `t_mem_photo_id`,`team_photo`.`t_mem_big_photo` AS `t_mem_big_photo`,`team_photo`.`t_mem_thumb_photo` AS `t_mem_thumb_photo` from (`team` join `team_photo`) where (`team`.`t_mem_id` = `team_photo`.`t_mem_id`);
 
 -- --------------------------------------------------------
 
@@ -284,6 +392,15 @@ CREATE TABLE IF NOT EXISTS `visa_photo` (
 DROP TABLE IF EXISTS `view_table_of_team`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_table_of_team` AS select `team`.`t_mem_id` AS `t_mem_id`,`team`.`t_mem_name` AS `t_mem_name`,`team`.`t_mem_surname` AS `t_mem_surname`,`team`.`t_mem_position_title` AS `t_mem_position_title`,`team`.`t_mem_position_detail` AS `t_mem_position_detail`,`team`.`t_mem_facebook` AS `t_mem_facebook`,`team`.`t_mem_twitter` AS `t_mem_twitter`,`team`.`t_mem_linkedin` AS `t_mem_linkedin`,`team_photo`.`t_mem_big_photo` AS `t_mem_big_photo`,`team_photo`.`t_mem_thumb_photo` AS `t_mem_thumb_photo` from (`team` join `team_photo`) where (`team`.`t_mem_id` = `team_photo`.`t_mem_id`);
+
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı `visa_view`
+--
+DROP TABLE IF EXISTS `visa_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `visa_view` AS select `visa`.`visa_id` AS `visa_id`,`visa`.`visa_title` AS `visa_title`,`visa`.`visa_detail` AS `visa_detail`,`visa`.`visa_css_filter` AS `visa_css_filter`,`visa_photo`.`visa_photo_id` AS `visa_photo_id`,`visa_photo`.`visa_big_photo` AS `visa_big_photo`,`visa_photo`.`visa_thumb_photo` AS `visa_thumb_photo` from (`visa` join `visa_photo`) where (`visa`.`visa_id` = `visa_photo`.`visa_id`);
 
 --
 -- Dökümü yapılmış tablolar için kısıtlamalar

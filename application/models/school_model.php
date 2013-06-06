@@ -4,7 +4,6 @@ class school_model extends CI_Model {
 
 	protected $last_record_id;
 
-
 	public function __construct()
     {
         parent::__construct();
@@ -12,9 +11,8 @@ class school_model extends CI_Model {
         $this->load->library('model_killer_library');
         $this->model_killer_library->setTableName('language_school');
         $this->model_killer_library->setNameOfIdColumn('school_id');
-        //$this->model_killer_library->setViewTableName('view_table_of_team');
+        $this->model_killer_library->setViewTableName('language_school_view');
     }
-
 
 	public function insertNewSchoolDetail($country_id, $school_name, $school_summary, $school_detail, $css_filter)
 	{
@@ -30,8 +28,11 @@ class school_model extends CI_Model {
 		return $this->last_record_id = $this->model_killer_library->getLastRecordId();
 	}
 
-	public function insertNewSchoolPhoto($school_big_photo, $school_thumb_photo)
+	public function insertNewSchoolPhoto($school_big_photo, $school_thumb_photo, $parent_id = NULL)
 	{
+		if ($parent_id == NULL) 
+			$parent_id = $this->last_record_id;
+
 		$insert_data = array(
 								'school_id'				=> $this->last_record_id,
 								'school_big_photo'		=> $school_big_photo,
@@ -47,25 +48,29 @@ class school_model extends CI_Model {
 		return $this->model_killer_library->readRow($record_id);
 	}
 
-	public function updateSchoolDetail($fb_id, $fb_student_name, $fb_student_surname, $fb_title, $fb_detail, $fb_country, $fb_lang_school)
+	public function updateSchoolDetail($school_id, $country_id, $school_name, $school_summary, $school_detail, $css_filter)
 	{
 		$update_data = array(
-								'fb_student_name' 		=> $fb_student_name,
-								'fb_student_surname' 	=> $fb_student_surname,
-								'fb_title'				=> $fb_title,
-								'fb_detail'				=> $fb_detail,
-								'fb_country'			=> $fb_country,
-								'fb_lang_school'		=> $fb_lang_school
+								'country_id' 		=> $country_id,
+								'school_name' 		=> $school_name,
+								'school_summary'	=> $school_summary,
+								'school_detail'		=> $school_detail,
+								'css_filter'		=> $css_filter
 							);
 
-		return $this->model_killer_library->updateRow($fb_id, $update_data);
-
+		return $this->model_killer_library->updateRow($school_id, $update_data);
 	}
 
 	public function deleteRow($row_id)
 	{
-		$this->model_killer_library->deleteRow($row_id);
+		return $this->model_killer_library->deleteRow($row_id);
 	}
 
+	public function deletePhotoRow($row_id)
+	{
+		$name_of_id_column = 'school_photo_id';
+		$table_name = 'language_school_photo';
+		return $this->model_killer_library->deleteRow($row_id, $name_of_id_column, $table_name);
+	}	
 
 }

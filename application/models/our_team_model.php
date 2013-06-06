@@ -74,9 +74,17 @@ class our_team_model extends CI_Model {
 	}
 
 
-	public function deleteImageFromDB($row_id)
+	public function deletePhotoRow($row_id)
 	{
-		return $this->model_killer_library->deleteRow($row_id, 't_mem_photo_id', 'team_photo');
+		$name_of_id_column = 't_mem_photo_id';
+		$table_name = 'team_photo';
+		return $this->model_killer_library->deleteRow($row_id, $name_of_id_column, $table_name);
+	}
+
+	public function readImageRow($id)
+	{
+		$this->model_killer_library->setTableName('team_photo');
+		return $this->model_killer_library->readRow($record_id);
 	}
 
 

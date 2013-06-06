@@ -46,15 +46,13 @@
 								<p>
 									<label>Dil Okulu Açıklama --Özet-- (max. 35 kelime)</label>
 									<textarea class="text-input textarea" id="textarea" name="school_summary_field"
-									 	cols="79" rows="5" style="color:#000;">
-									</textarea>	
+									 	cols="79" rows="5" style="color:#000;"></textarea>	
 								</p><br />
 								
 								<p>
 									<label>Dil Okulu Açıklama --Detay--</label>
 									<textarea class="text-input textarea" id="textarea" name="school_detail_field"
-									 	cols="79" rows="12" style="color:#000;">
-									</textarea>	
+									 	cols="79" rows="12" style="color:#000;"></textarea>	
 								</p>
 								
 								<p>

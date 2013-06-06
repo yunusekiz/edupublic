@@ -4,7 +4,6 @@ class feedback_model extends CI_Model {
 
 	protected $last_record_id;
 
-
 	public function __construct()
     {
         parent::__construct();
@@ -12,9 +11,8 @@ class feedback_model extends CI_Model {
         $this->load->library('model_killer_library');
         $this->model_killer_library->setTableName('feedback');
         $this->model_killer_library->setNameOfIdColumn('fb_id');
-        //$this->model_killer_library->setViewTableName('view_table_of_team');
+        $this->model_killer_library->setViewTableName('feedback_view');
     }
-
 
 	public function insertNewFeedbackDetail($fb_student_name, $fb_student_surname, $fb_title, $fb_detail, $fb_country, $fb_lang_school)
 	{
@@ -31,10 +29,13 @@ class feedback_model extends CI_Model {
 		return $this->last_record_id = $this->model_killer_library->getLastRecordId();
 	}
 
-	public function insertNewFeedbackPhoto($fb_big_photo, $fb_thumb_photo)
+	public function insertNewFeedbackPhoto($fb_big_photo, $fb_thumb_photo, $parent_id = NULL)
 	{
+		if ($parent_id == NULL) 
+			$parent_id = $this->last_record_id;
+
 		$insert_data = array(
-								'fb_id'				=> $this->last_record_id,
+								'fb_id'				=> $parent_id,
 								'fb_big_photo'		=> $fb_big_photo,
 								'fb_thumb_photo'	=> $fb_thumb_photo
 							);
@@ -65,8 +66,14 @@ class feedback_model extends CI_Model {
 
 	public function deleteRow($row_id)
 	{
-		$this->model_killer_library->deleteRow($row_id);
+		return $this->model_killer_library->deleteRow($row_id);
 	}
 
+	public function deletePhotoRow($row_id)
+	{
+		$name_of_id_column = 'fb_photo_id';
+		$table_name = 'feedback_photo';
+		return $this->model_killer_library->deleteRow($row_id, $name_of_id_column, $table_name);
+	}
 
 }

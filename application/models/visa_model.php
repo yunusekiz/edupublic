@@ -4,7 +4,6 @@ class visa_model extends CI_Model {
 
 	protected $last_record_id;
 
-
 	public function __construct()
     {
         parent::__construct();
@@ -12,9 +11,8 @@ class visa_model extends CI_Model {
         $this->load->library('model_killer_library');
         $this->model_killer_library->setTableName('visa');
         $this->model_killer_library->setNameOfIdColumn('visa_id');
-        //$this->model_killer_library->setViewTableName('view_table_of_team');
+        $this->model_killer_library->setViewTableName('visa_view');
     }
-
 
 	public function insertNewVisaDetail($visa_title, $visa_detail, $visa_css_filter = NULL)
 	{
@@ -28,10 +26,13 @@ class visa_model extends CI_Model {
 		return $this->last_record_id = $this->model_killer_library->getLastRecordId();
 	}
 
-	public function insertNewVisaPhoto($visa_big_photo, $visa_thumb_photo)
+	public function insertNewVisaPhoto($visa_big_photo, $visa_thumb_photo, $parent_id = NULL)
 	{
+		if ($parent_id == NULL) 
+			$parent_id = $this->last_record_id;
+
 		$insert_data = array(
-								'visa_id'				=> $this->last_record_id,
+								'visa_id'				=> $parent_id,
 								'visa_big_photo'		=> $visa_big_photo,
 								'visa_thumb_photo'		=> $visa_thumb_photo
 							);
@@ -59,8 +60,14 @@ class visa_model extends CI_Model {
 
 	public function deleteRow($row_id)
 	{
-		$this->model_killer_library->deleteRow($row_id);
+		return $this->model_killer_library->deleteRow($row_id);
 	}
 
+	public function deletePhotoRow($row_id)
+	{
+		$name_of_id_column = 'visa_photo_id';
+		$table_name = 'visa_photo';
+		return $this->model_killer_library->deleteRow($row_id, $name_of_id_column, $table_name);
+	}	
 
 }

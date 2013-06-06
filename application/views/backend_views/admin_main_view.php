@@ -38,7 +38,7 @@
 					</a>
 					<ul>
 						<li><a href="{base}backend/school/addSchool" class="{add_ref_current}">Dil Okulu Ekle</a></li>
-						<li><a href="{base}backend/reference/allReferences" class="{edit_ref_current}">Dİl Okulu Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
+						<li><a href="{base}backend/school/allItems" class="{edit_ref_current}">Dİl Okulu Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
 						<li><a href="{base}backend/country/addCountry" class="{edit_ref_current}">Ülke Ekle </a></li>
 						<li><a href="{base}backend/reference/allCategories" class="{edit_ref_current}">Ülke Düzenle / Sil</a></li>
 					</ul>
@@ -50,7 +50,7 @@
 					</a>
 					<ul>
 						<li><a href="{base}backend/visa/addVisa" class="{add_ref_current}">Vize Ekle</a></li>
-						<li><a href="{base}backend/reference/allReferences" class="{edit_ref_current}">Vize Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
+						<li><a href="{base}backend/visa/allItems" class="{edit_ref_current}">Vize Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
 					</ul>
 				</li>
 
@@ -61,7 +61,7 @@
 					</a>
 					<ul>
 						<li><a href="{base}backend/feedback/addFeedback" class="{add_ref_current}">Bildirim Ekle</a></li>
-						<li><a href="{base}backend/reference/allReferences" class="{edit_ref_current}">Bildirim Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
+						<li><a href="{base}backend/feedback/allItems" class="{edit_ref_current}">Bildirim Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
 					</ul>
 				</li>
 

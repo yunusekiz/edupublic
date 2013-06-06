@@ -13,21 +13,6 @@
 						<form action="{base}backend/ourTeam/updateTeam" method="post" enctype="multipart/form-data">
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 							{single_record}
-								<p class="cocukdiv_image"><label>Ekip Üyesi Resmi </label>
-								<!--<input type="file" name="resimler[]" class="multi" accept="gif|jpg|png" /><br />-->
-                                <input type="file" name="t_mem_photo_field" accept="image/*" />
-                                <br/> <br/> <br/>
-                                <div style="float:left;"><label><b style="font-size:16px;">Ekip Üyesinin Mevcut Resmi : </b></label></div>
-                                <div class="cocukdiv_image" style="float:left; margin-top:-25px; margin-left:40px;">
-                                	<a href="{base}{t_mem_big_photo}" title="{t_mem_name}" >
-                                		<img src="{base}{t_mem_thumb_photo}" width="70" height="60" width="mevcut referans resmi" />
-                                	</a>
-                                </div>
-                                <div class="clear"></div>
-                                <div style="float:left; margin-top:20px;"><label>(Bilgi ::: yeni bir resim yüklerseniz, bu resim otomatikman silinir) </label></div>
-                                <div class="clear"></div>
-                                </p><br /><hr><br />
-
 								<p>
 									<label>Ekip Üyesinin Adı </label>
 									<input class="text-input large-input" type="text"
@@ -80,7 +65,7 @@
 								</p><br />								
 								
 								<p>
-									<input type="hidden" name="t_mem_id" value="1.31{t_mem_id}"/>
+									<input type="hidden" name="t_mem_id" value="{t_mem_id}"/>
 									<input class="button" type="submit" value="Kaydet" />
 								</p>
 							{/single_record}

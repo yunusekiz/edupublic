@@ -25,13 +25,15 @@ class school extends CI_Controller {
 		}
 
 		$this->load->helper('filter_killer');
+		$this->load->helper('delete_file_killer');
+
 		$this->load->model('school_model');
 		
 		$this->parser_data['base'] = base_url();
+		$this->parser_data['backend_base'] = base_url().'backend/';			
 
 		$this->load->library('jquery_notification_library');
 		$this->jquery_notification_library->setParserData($this->parser_data);
-
 	}
 
 	public function addSchool()
@@ -44,7 +46,6 @@ class school extends CI_Controller {
 		$this->parser->parse('backend_views/add_school_view',$this->parser_data);
 		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);
 	}
-
 
 	public function controlSchool()
 	{
@@ -111,7 +112,6 @@ class school extends CI_Controller {
 					$return_path = 'addSchool';
 					$this->jquery_notification_library->errorMessage($message, $return_path,2);					
 				}
-
 			}
 			else
 				echo "resim yüklenemedi<br/>";			
@@ -124,6 +124,27 @@ class school extends CI_Controller {
 		}
 
 	}
+
+	public function allItems()
+	{
+		if ($this->school_model->readRow()!=NULL) 
+		{
+			$this->parser_data['all_items'] = $this->school_model->readRow();
+			$this->parser_data['all_items_header_css']  = array(array());
+		}
+		else
+		{
+			$this->parser_data['all_items'] = array();	
+			$this->parser_data['all_items_header_css']  = array();	
+		}
+
+		// admin panelinin ilgili view lerini yükler
+		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
+		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
+		$this->parser->parse('backend_views/all_schools_view',$this->parser_data);
+		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);		
+	}
+
 
 }
 

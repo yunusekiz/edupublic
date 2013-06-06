@@ -124,7 +124,7 @@ class image_upload_resize_library{
 		$upload_config['max_height'] = '7680';
 		
 		if ($this->bootstrap_data['image_name'] != NULL)
-			$upload_config['file_name'] = $this->bootstrap_data['image_name'] ;
+			$upload_config['file_name'] = $this->bootstrap_data['image_name'].rand();
 
 		$image_form_field = $this->bootstrap_data['image_form_field'];
 
@@ -330,4 +330,17 @@ class image_upload_resize_library{
 		return $this->data_after_resize['db_thumb_image'];
 	}
 ////////////////// resize işleminden sonra gerekli dataları alan metodlar bitiş //////////////
-}
+
+
+///////////////// herhangi bir resmin form aracılığla seçilip seçilmediğini kontrol eder////	
+	public function isSelectedAnyFile()
+	{
+		if ($this->getUploadedFileClientName()!=NULL)
+			return TRUE;
+		else
+			return FALSE;
+	}
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+} /* end of class */

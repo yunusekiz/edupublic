@@ -20,7 +20,8 @@
                                 </p><br /><hr><br />
 	
 								<p>
-								 	<input class="text-input large-input" type="hidden" name="id" value="{id}"/> 
+								 	<input class="text-input large-input" type="hidden" name="id" value="{id}"/>
+								 	<input class="text-input large-input" type="hidden" name="photo_id" value="{photo_id}"/> 
 									<input class="button" type="submit" value="Kaydet" />
 								</p>
 								
