@@ -2,13 +2,13 @@
 
 class edupublic extends CI_Controller {
 
-	protected $base_data;
+	protected $parser_data;
 
 	public function __construct()
 	{
 		parent::__construct();
 
-		$this->base_data['base'] = base_url();
+		$this->parser_data['base'] = base_url();
 
 	}
 
@@ -17,7 +17,11 @@ class edupublic extends CI_Controller {
 	{
 		$this->header();
 
+		$this->promo_slider();
+		$this->visa();
+		$this->feedback();
 		$this->our_team();
+		$this->contact();
 		
 		$this->footer();
 	}
@@ -25,16 +29,56 @@ class edupublic extends CI_Controller {
 
 	protected function header()
 	{
-		$this->parser->parse('frontend_views/header_view',$this->base_data);
+		$this->parser->parse('frontend_views/header_view',$this->parser_data);
 	}
 
 	protected function footer()
 	{
-		$this->parser->parse('frontend_views/footer_view',$this->base_data);
+		$this->parser->parse('frontend_views/footer_view',$this->parser_data);
+	}
+
+	protected function contact()
+	{
+		$this->load->model('contact_model');
+		$this->parser_data['contact_parser_data'] = $this->contact_model->readRow();
+		$this->parser->parse('frontend_views/contact_view',$this->parser_data);
 	}
 
 	protected function our_team()
 	{
-		$this->parser->parse('frontend_views/our_team_view',$this->base_data);
+		$this->load->model('our_team_model');
+		$this->parser_data['our_team_parser_data'] = $this->our_team_model->readRow();
+		$this->parser->parse('frontend_views/our_team_view',$this->parser_data);
+	}
+
+	protected function feedback()
+	{
+		$this->load->model('feedback_model');
+		$this->parser_data['feedbacks_parser_data'] = $this->feedback_model->readRow();
+		$this->parser->parse('frontend_views/feedback_view',$this->parser_data);
+	}
+
+	protected function visa()
+	{
+		$this->load->model('visa_model');
+		$this->parser_data['visas_parser_data'] = $this->visa_model->readRow();
+		$this->parser->parse('frontend_views/visa_view',$this->parser_data);		
+	}
+
+	protected function language_school()
+	{
+		$this->parser->parse('frontend_views/language_school_view',$this->parser_data);		
+	}
+
+	protected function school_slider()
+	{
+		$this->parser->parse('frontend_views/school_slider_view',$this->parser_data);
+	}
+
+	protected function promo_slider()
+	{
+		$this->load->model('promo_slider_model');
+		$this->parser_data['promo_slider_parser_data'] = $this->promo_slider_model->readRow();
+		$this->parser->parse('frontend_views/promo_slider_view',$this->parser_data);
 	}
 }

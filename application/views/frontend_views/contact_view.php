@@ -59,19 +59,21 @@
             </div>
 
 
-            <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
+          <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
+          {contact_parser_data}
             <h3 class="inner-sub-caps align-left">Adresimiz</h3>
             <address class="remove-bottom pad-bottom-half col-white">
             <strong>Edupublic Ltd.</strong><br> 
-            Açık, adres, alanı...
+            {address}
             </address>
             <ul class="social-icons">
-              <li><span><img src="{base}images/icons/s01.png" title="reason" alt="reason by edupublic"></span><a href="#">telefon alanı</a></li>
-              <li><span><img src="{base}images/icons/s02.png" title="reason" alt="reason by edupublic"></span><a href="#">mail alanı</a></li>
-              <li><span><img src="{base}images/icons/s03.png" title="reason" alt="reason by edupublic"></span><a href="#">facebok alanı</a></li>
-              <li><span><img src="{base}images/icons/s04.png" title="reason" alt="reason by edupublic"></span><a href="#">@twitteralanı</a></li>
+            
+              <li><span><img src="{base}images/icons/s01.png" title="reason" alt="reason by edupublic"></span><a href="#">{phone}</a></li>
+              <li><span><img src="{base}images/icons/s02.png" title="reason" alt="reason by edupublic"></span><a href="#">{email}</a></li>
+              <li><span><img src="{base}images/icons/s03.png" title="reason" alt="reason by edupublic"></span><a href="#">{facebook}</a></li>
+              <li><span><img src="{base}images/icons/s04.png" title="reason" alt="reason by edupublic"></span><a href="#">{twitter}</a></li>
             </ul>
-
+        {/contact_parser_data}  
         </div>
             
           </div><!-- row : ends -->

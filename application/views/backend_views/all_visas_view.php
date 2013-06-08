@@ -47,7 +47,7 @@
 									</td>
 
 									<td class="cocukdiv_image">
-										<a href="{base}{visa_big_photo}" title="{fb_student_name}">
+										<a href="{base}{visa_big_photo}" title="{visa_title}">
 										 	<img src="{base}{visa_thumb_photo}" width="45" height="45" style="margin-bottom:-8px; margin-right:-5px;" title="mevcut fotoğraf" />
 										</a>
 									</td>

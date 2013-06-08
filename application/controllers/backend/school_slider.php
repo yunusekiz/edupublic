@@ -64,8 +64,8 @@ class school_slider extends CI_Controller {
 							'image_form_field'	=>	'school_slider_photo_field',
 							'upload_path'		=>	'assets/images/school_slider',
 							'image_name'		=>	$image_name,
-							'big_img_width'		=>	427,
-							'big_img_height'	=>	426,
+							'big_img_width'		=>	940,
+							'big_img_height'	=>	374,
 							'thumb_img_width'	=>	80,
 							'thumb_img_height'	=>	80
 					 	 );
@@ -245,8 +245,8 @@ class school_slider extends CI_Controller {
 							'image_form_field'	=>	'photo_field',
 							'upload_path'		=>	'assets/images/school_slider',
 							'image_name'		=>	$image_name.rand(),
-							'big_img_width'		=>	427,
-							'big_img_height'	=>	426,
+							'big_img_width'		=>	940,
+							'big_img_height'	=>	374,
 							'thumb_img_width'	=>	80,
 							'thumb_img_height'	=>	80
 					 );

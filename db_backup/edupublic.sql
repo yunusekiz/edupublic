@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 08 Haz 2013, 15:44:04
+-- Üretim Zamanı: 08 Haz 2013, 18:39:28
 -- Sunucu sürümü: 5.5.25a
 -- PHP Sürümü: 5.4.4
 
@@ -105,7 +105,14 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `fb_country` text NOT NULL,
   `fb_lang_school` text NOT NULL,
   PRIMARY KEY (`fb_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Tablo döküm verisi `feedback`
+--
+
+INSERT INTO `feedback` (`fb_id`, `fb_student_name`, `fb_student_surname`, `fb_title`, `fb_detail`, `fb_country`, `fb_lang_school`) VALUES
+(1, 'öğrenci adı', ' öğrenci soyadı', ' bildlirim başlık', 'bildirim deratrsdsmosderatrsdsmosderatrsdsmosderatrsdsmoslövlderatrsdsmoslkdovderatrsdsmosderatrsdsmosderatrsdsmos', 'örnek bildirim ülke', 'örnek bildirim dilokulu');
 
 -- --------------------------------------------------------
 
@@ -120,7 +127,14 @@ CREATE TABLE IF NOT EXISTS `feedback_photo` (
   `fb_thumb_photo` text NOT NULL,
   PRIMARY KEY (`fb_photo_id`),
   KEY `fb_id` (`fb_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Tablo döküm verisi `feedback_photo`
+--
+
+INSERT INTO `feedback_photo` (`fb_photo_id`, `fb_id`, `fb_big_photo`, `fb_thumb_photo`) VALUES
+(1, 1, 'assets/images/feedback/ogrenci-adi18854.png', 'assets/images/feedback/thumb/ogrenci-adi18854_thumb.png');
 
 -- --------------------------------------------------------
 
@@ -215,7 +229,15 @@ CREATE TABLE IF NOT EXISTS `promo_slider` (
   `little_text_1` text NOT NULL,
   `little_text_2` text NOT NULL,
   PRIMARY KEY (`slider_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Tablo döküm verisi `promo_slider`
+--
+
+INSERT INTO `promo_slider` (`slider_id`, `big_text`, `little_text_1`, `little_text_2`) VALUES
+(4, 'promo slider büyük metin', 'promo slider küçük metin üst', 'promo slider küçük metin alt'),
+(5, 'promo slider büyük metin 2', 'promo slider küçük metin üst 2', 'promo slider küçük metin alt 2');
 
 -- --------------------------------------------------------
 
@@ -229,14 +251,15 @@ CREATE TABLE IF NOT EXISTS `school_slider` (
   `slider_caption` text NOT NULL,
   PRIMARY KEY (`slider_id`),
   KEY `school_id` (`school_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Tablo döküm verisi `school_slider`
 --
 
 INSERT INTO `school_slider` (`slider_id`, `school_id`, `slider_caption`) VALUES
-(8, 10, 'amerikan için slider');
+(8, 10, 'amerikan için slider'),
+(9, 10, 'amerikan için slider');
 
 -- --------------------------------------------------------
 
@@ -251,14 +274,15 @@ CREATE TABLE IF NOT EXISTS `school_slider_photo` (
   `slider_thumb_photo` text NOT NULL,
   PRIMARY KEY (`slider_photo_id`),
   KEY `slider_id` (`slider_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Tablo döküm verisi `school_slider_photo`
 --
 
 INSERT INTO `school_slider_photo` (`slider_photo_id`, `slider_id`, `slider_big_photo`, `slider_thumb_photo`) VALUES
-(10, 8, 'assets/images/school_slider/amerikan-icin-slider20893.jpg', 'assets/images/school_slider/thumb/amerikan-icin-slider20893_thumb.jpg');
+(10, 8, 'assets/images/school_slider/amerikan-icin-slider20893.jpg', 'assets/images/school_slider/thumb/amerikan-icin-slider20893_thumb.jpg'),
+(11, 9, 'assets/images/school_slider/amerikan-icin-slider8133.jpg', 'assets/images/school_slider/thumb/amerikan-icin-slider8133_thumb.jpg');
 
 -- --------------------------------------------------------
 
@@ -297,7 +321,7 @@ CREATE TABLE IF NOT EXISTS `team` (
 --
 
 INSERT INTO `team` (`t_mem_id`, `t_mem_name`, `t_mem_surname`, `t_mem_position_title`, `t_mem_position_detail`, `t_mem_facebook`, `t_mem_twitter`, `t_mem_linkedin`) VALUES
-(1, 'yunus', 'ekiz', 'uzman', 'yazılım mimarisi uzmanı', 'front end twitter', 'front end twitter', 'frontend linkedin');
+(1, 'adriana', 'luma', 'uzman', 'yazılım mimarisi uzmanı', 'front end twitter', 'front end twitter', 'frontend linkedin');
 
 -- --------------------------------------------------------
 
@@ -368,7 +392,14 @@ CREATE TABLE IF NOT EXISTS `visa` (
   `visa_detail` text NOT NULL,
   `visa_css_filter` text,
   PRIMARY KEY (`visa_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Tablo döküm verisi `visa`
+--
+
+INSERT INTO `visa` (`visa_id`, `visa_title`, `visa_detail`, `visa_css_filter`) VALUES
+(1, 'amerika birleşik devletleri', 'amerika birleşik devletlerine gitmek inanın çok zordur çok meşakkatlidir, bu konuda bize güvenebilirsiniz', NULL);
 
 -- --------------------------------------------------------
 
@@ -383,7 +414,14 @@ CREATE TABLE IF NOT EXISTS `visa_photo` (
   `visa_thumb_photo` text NOT NULL,
   PRIMARY KEY (`visa_photo_id`),
   KEY `visa_id` (`visa_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Tablo döküm verisi `visa_photo`
+--
+
+INSERT INTO `visa_photo` (`visa_photo_id`, `visa_id`, `visa_big_photo`, `visa_thumb_photo`) VALUES
+(2, 1, 'assets/images/visa/amerika-birlesik-devletleri2178622603.png', 'assets/images/visa/thumb/amerika-birlesik-devletleri2178622603_thumb.png');
 
 -- --------------------------------------------------------
 

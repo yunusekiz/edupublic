@@ -57,8 +57,8 @@ class visa extends CI_Controller {
 							'image_form_field'	=>	'visa_photo_field',
 							'upload_path'		=>	'assets/images/visa',
 							'image_name'		=>	$image_name,
-							'big_img_width'		=>	427,
-							'big_img_height'	=>	426,
+							'big_img_width'		=>	230,
+							'big_img_height'	=>	230,
 							'thumb_img_width'	=>	80,
 							'thumb_img_height'	=>	80
 					 	 );
@@ -238,8 +238,8 @@ class visa extends CI_Controller {
 							'image_form_field'	=>	'photo_field',
 							'upload_path'		=>	'assets/images/visa',
 							'image_name'		=>	$image_name.rand(),
-							'big_img_width'		=>	427,
-							'big_img_height'	=>	426,
+							'big_img_width'		=>	230,
+							'big_img_height'	=>	230,
 							'thumb_img_width'	=>	80,
 							'thumb_img_height'	=>	80
 					 );
