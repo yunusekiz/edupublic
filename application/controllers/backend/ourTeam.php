@@ -20,7 +20,8 @@ class ourTeam extends CI_Controller {
 															// şu aşamada olup olmadığı bilinmeyen admin_session değişkeni atanır
 		if( empty($admin) ) // eğer $admin değişkenini değeri boş ise, kullanıcı login formuna geri gönderilir
 		{
-			echo "<meta http-equiv=\"refresh\" content=\"0; url=../../login\">";
+			$base = base_url();
+			echo "<meta http-equiv=\"refresh\" content=\"0; url=$base"."login\">";
 			die();
 		}
 

@@ -14,7 +14,6 @@ class promo_slider_model extends CI_Model {
         //$this->model_killer_library->setViewTableName('view_table_of_team');
     }
 
-
 	public function insertNewPromoSlider($big_text, $little_text_1, $little_text_2)
 	{
 		$insert_data = array(
@@ -27,14 +26,12 @@ class promo_slider_model extends CI_Model {
 		return $this->last_record_id = $this->model_killer_library->getLastRecordId();
 	}
 
-
 	public function readRow($record_id = NULL)
 	{
 		return $this->model_killer_library->readRow($record_id);
 	}
 
-
-	public function updaterPromoSlider($slider_id, $big_text, $little_text_1, $little_text_2)
+	public function updatePromoSlider($slider_id, $big_text, $little_text_1, $little_text_2)
 	{
 		$update_data = array(
 								'big_text' 			=> $big_text,
@@ -45,10 +42,9 @@ class promo_slider_model extends CI_Model {
 		return $this->model_killer_library->updateRow($slider_id, $update_data);
 	}
 
-
 	public function deleteRow($row_id)
 	{
-		$this->model_killer_library->deleteRow($row_id);
+		return $this->model_killer_library->deleteRow($row_id);
 	}
 
 }

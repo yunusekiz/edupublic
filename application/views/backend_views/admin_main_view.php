@@ -22,10 +22,10 @@
 						Anasayfa Düzeni
 					</a>
 					<ul>
-						<li><a href="{base}backend/slider/addPromoSlider" class="{big_slider_current}">Promosyon Sliderı Ekle</a></li>
-						<li><a href="{base}backend/slider/addSchoolSlider" class="{big_slider_current}">Dil Okulu Sliderı Ekle</a></li>
-						<li><a href="{base}backend/slider/editPromoSlider" class="{big_slider_current}">Promosyon Sliderı Düzenle/Sil</a></li>
-						<li><a href="{base}backend/slider/editSchoolSlider" class="{big_slider_current}">Dil Okulu Sliderı Düzenle/Sil</a></li>												
+						<li><a href="{base}backend/promo_slider/addPromoSlider" class="{big_slider_current}">Promosyon Sliderı Ekle</a></li>
+						<li><a href="{base}backend/school_slider/addSchoolSlider" class="{big_slider_current}">Dil Okulu Sliderı Ekle</a></li>
+						<li><a href="{base}backend/promo_slider/allItems" class="{big_slider_current}">Promosyon Sliderı Düzenle/Sil</a></li>
+						<li><a href="{base}backend/school_slider/allItems"	 class="{big_slider_current}">Dil Okulu Sliderı Düzenle/Sil</a></li>												
 					</ul>
 
 				</li>
@@ -40,7 +40,7 @@
 						<li><a href="{base}backend/school/addSchool" class="{add_ref_current}">Dil Okulu Ekle</a></li>
 						<li><a href="{base}backend/school/allItems" class="{edit_ref_current}">Dİl Okulu Düzenle/Sil</a></li> <!-- Add class "current" to sub menu items also -->
 						<li><a href="{base}backend/country/addCountry" class="{edit_ref_current}">Ülke Ekle </a></li>
-						<li><a href="{base}backend/reference/allCategories" class="{edit_ref_current}">Ülke Düzenle / Sil</a></li>
+						<li><a href="{base}backend/country/allItems" class="{edit_ref_current}">Ülke Düzenle / Sil</a></li>
 					</ul>
 				</li>
 
@@ -138,12 +138,15 @@
         
         		<div id="main-content"> <!-- Main Content Section with everything -->	
 				
+
+
+
 			
 			<!-- Page Head -->
-			<h2>Hoşgeldiniz</h2>
-			<p id="page-intro">Ne Yapmak İstersiniz?</p>
+<!-- 			<h2>Hoşgeldiniz</h2>
+			<p id="page-intro">Ne Yapmak İstersiniz?</p> -->
 			
-			<ul class="shortcut-buttons-set">
+<!-- 			<ul class="shortcut-buttons-set">
 				
 				<li><a class="shortcut-button" href="{base}backend/about/editAboutUs"><span>
 					<img src="{base}assets/backend_assets/images/icons/about_us_48.png" alt="icon" /><br />
@@ -153,27 +156,27 @@
 				<li><a class="shortcut-button" href="{base}backend/contact/editContact"><span>
 					<img src="{base}assets/backend_assets/images/icons/contact_48.png" alt="icon" /><br />
 					İletişim Bilgilerini Düzenle
-				</span></a></li>
+				</span></a></li> -->
 				
 				<!--<li><a class="shortcut-button" href="#"><span>
 					<img src="{base}assets/backend_assets/images/icons/services_48.png" alt="icon" /><br />
 					Hizmetlerimiz Metnini Düzenle
 				</span></a></li>-->
-				<li><a class="shortcut-button" href="{base}backend/news/addNews"><span>
+<!-- 				<li><a class="shortcut-button" href="{base}backend/news/addNews"><span>
 					<img src="{base}assets/backend_assets/images/icons/news_48.png" alt="icon" /><br />
 					Yeni Bir Haber Ekle
-				</span></a></li>
+				</span></a></li> -->
 <!--				<li><a class="shortcut-button" href="#" ><span>
 					<img src="{base}assets/backend_assets/images/icons/gallery_48.png" alt="icon" /><br />
 					Galeriye Resim Ekle
 				</span></a></li>-->
                 
-				<li><a class="shortcut-button" href="{base}backend/reference/addReference" ><!--rel="modal"-->  <span>
+<!-- 				<li><a class="shortcut-button" href="{base}backend/reference/addReference" > <span>
 					<img src="{base}assets/backend_assets/images/icons/references_45.gif" alt="icon" /><br />
 					Yeni Bir Referans Ekle
 				</span></a></li>                
 				
-			</ul><!-- End .shortcut-buttons-set -->
+			</ul> --><!-- End .shortcut-buttons-set -->
             
             <div class="clear"></div>
             

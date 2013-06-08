@@ -3,8 +3,6 @@
 class feedback extends CI_Controller {
 	
 	protected $parser_data;
-
-	protected $row_data;
 	
 	public function index()
 	{
@@ -20,7 +18,8 @@ class feedback extends CI_Controller {
 															// şu aşamada olup olmadığı bilinmeyen admin_session değişkeni atanır
 		if( empty($admin) ) // eğer $admin değişkenini değeri boş ise, kullanıcı login formuna geri gönderilir
 		{
-			echo "<meta http-equiv=\"refresh\" content=\"0; url=../../login\">";
+			$base = base_url();
+			echo "<meta http-equiv=\"refresh\" content=\"0; url=$base"."login\">";
 			die();
 		}
 
@@ -245,7 +244,7 @@ class feedback extends CI_Controller {
 			return TRUE;
 		else
 			return FALSE;
-	}	
+	}
 
 
 	public function changeItemPhoto()
@@ -265,11 +264,9 @@ class feedback extends CI_Controller {
 							'thumb_img_width'	=>	80,
 							'thumb_img_height'	=>	80
 					 );
-
 		$this->load->library('image_upload_resize_library');
 				
 		$this->image_upload_resize_library->setBootstrapData($array);
-		
 		$this->image_upload_resize_library->display_errors = FALSE;
 			
 		$image_up_and_resize = $this->image_upload_resize_library->imageUpAndResize();

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 06 Haz 2013, 10:31:32
+-- Üretim Zamanı: 08 Haz 2013, 15:44:04
 -- Sunucu sürümü: 5.5.25a
 -- PHP Sürümü: 5.4.4
 
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `country` (
   `country_name` text NOT NULL,
   `css_filter` text,
   PRIMARY KEY (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Tablo döküm verisi `country`
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `fb_country` text NOT NULL,
   `fb_lang_school` text NOT NULL,
   PRIMARY KEY (`fb_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `feedback_photo` (
   `fb_thumb_photo` text NOT NULL,
   PRIMARY KEY (`fb_photo_id`),
   KEY `fb_id` (`fb_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -154,14 +154,14 @@ CREATE TABLE IF NOT EXISTS `language_school` (
   `css_filter` text,
   PRIMARY KEY (`school_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Tablo döküm verisi `language_school`
 --
 
 INSERT INTO `language_school` (`school_id`, `country_id`, `school_name`, `school_summary`, `school_detail`, `css_filter`) VALUES
-(1, 5, 'amerikan dil enstitüsü', 'dsds									', 'dsds									', 'amerikan-dil-enstitusu');
+(10, 5, 'amerikan dil enstitüsü', 'wsds', 'dsds', 'amerikan-dil-enstitusu');
 
 -- --------------------------------------------------------
 
@@ -176,14 +176,14 @@ CREATE TABLE IF NOT EXISTS `language_school_photo` (
   `school_thumb_photo` text NOT NULL,
   PRIMARY KEY (`school_photo_id`),
   KEY `school_id` (`school_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Tablo döküm verisi `language_school_photo`
 --
 
 INSERT INTO `language_school_photo` (`school_photo_id`, `school_id`, `school_big_photo`, `school_thumb_photo`) VALUES
-(1, 1, 'assets/images/schools/amerikan-dil-enstitusu7243.jpg', 'assets/images/schools/thumb/amerikan-dil-enstitusu7243_thumb.jpg');
+(14, 10, 'assets/images/schools/amerikan-dil-enstitusu30836.jpg', 'assets/images/schools/thumb/amerikan-dil-enstitusu30836_thumb.jpg');
 
 -- --------------------------------------------------------
 
@@ -215,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `promo_slider` (
   `little_text_1` text NOT NULL,
   `little_text_2` text NOT NULL,
   PRIMARY KEY (`slider_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -229,7 +229,14 @@ CREATE TABLE IF NOT EXISTS `school_slider` (
   `slider_caption` text NOT NULL,
   PRIMARY KEY (`slider_id`),
   KEY `school_id` (`school_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Tablo döküm verisi `school_slider`
+--
+
+INSERT INTO `school_slider` (`slider_id`, `school_id`, `slider_caption`) VALUES
+(8, 10, 'amerikan için slider');
 
 -- --------------------------------------------------------
 
@@ -244,8 +251,29 @@ CREATE TABLE IF NOT EXISTS `school_slider_photo` (
   `slider_thumb_photo` text NOT NULL,
   PRIMARY KEY (`slider_photo_id`),
   KEY `slider_id` (`slider_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
+--
+-- Tablo döküm verisi `school_slider_photo`
+--
+
+INSERT INTO `school_slider_photo` (`slider_photo_id`, `slider_id`, `slider_big_photo`, `slider_thumb_photo`) VALUES
+(10, 8, 'assets/images/school_slider/amerikan-icin-slider20893.jpg', 'assets/images/school_slider/thumb/amerikan-icin-slider20893_thumb.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı durumu `school_slider_view`
+--
+CREATE TABLE IF NOT EXISTS `school_slider_view` (
+`slider_id` int(11)
+,`slider_caption` text
+,`school_id` int(11)
+,`school_name` text
+,`slider_photo_id` int(11)
+,`slider_big_photo` text
+,`slider_thumb_photo` text
+);
 -- --------------------------------------------------------
 
 --
@@ -262,7 +290,14 @@ CREATE TABLE IF NOT EXISTS `team` (
   `t_mem_twitter` text NOT NULL,
   `t_mem_linkedin` text NOT NULL,
   PRIMARY KEY (`t_mem_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Tablo döküm verisi `team`
+--
+
+INSERT INTO `team` (`t_mem_id`, `t_mem_name`, `t_mem_surname`, `t_mem_position_title`, `t_mem_position_detail`, `t_mem_facebook`, `t_mem_twitter`, `t_mem_linkedin`) VALUES
+(1, 'yunus', 'ekiz', 'uzman', 'yazılım mimarisi uzmanı', 'front end twitter', 'front end twitter', 'frontend linkedin');
 
 -- --------------------------------------------------------
 
@@ -277,7 +312,14 @@ CREATE TABLE IF NOT EXISTS `team_photo` (
   `t_mem_thumb_photo` text NOT NULL,
   PRIMARY KEY (`t_mem_photo_id`),
   KEY `t_mem_id` (`t_mem_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Tablo döküm verisi `team_photo`
+--
+
+INSERT INTO `team_photo` (`t_mem_photo_id`, `t_mem_id`, `t_mem_big_photo`, `t_mem_thumb_photo`) VALUES
+(1, 1, 'assets/images/team/yunus212276216.jpg', 'assets/images/team/thumb/yunus212276216_thumb.jpg');
 
 -- --------------------------------------------------------
 
@@ -326,7 +368,7 @@ CREATE TABLE IF NOT EXISTS `visa` (
   `visa_detail` text NOT NULL,
   `visa_css_filter` text,
   PRIMARY KEY (`visa_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -341,7 +383,7 @@ CREATE TABLE IF NOT EXISTS `visa_photo` (
   `visa_thumb_photo` text NOT NULL,
   PRIMARY KEY (`visa_photo_id`),
   KEY `visa_id` (`visa_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -374,6 +416,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `language_school_view`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `language_school_view` AS select `language_school`.`school_id` AS `school_id`,`language_school`.`school_name` AS `school_name`,`country`.`country_id` AS `country_id`,`country`.`country_name` AS `country_name`,`language_school`.`school_summary` AS `school_summary`,`language_school`.`school_detail` AS `school_detail`,`language_school`.`css_filter` AS `school_css`,`country`.`css_filter` AS `country_css`,`language_school_photo`.`school_photo_id` AS `school_photo_id`,`language_school_photo`.`school_big_photo` AS `school_big_photo`,`language_school_photo`.`school_thumb_photo` AS `school_thumb_photo` from ((`country` join `language_school`) join `language_school_photo`) where ((`country`.`country_id` = `language_school`.`country_id`) and (`language_school`.`school_id` = `language_school_photo`.`school_id`));
+
+-- --------------------------------------------------------
+
+--
+-- Görünüm yapısı `school_slider_view`
+--
+DROP TABLE IF EXISTS `school_slider_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `school_slider_view` AS select `school_slider`.`slider_id` AS `slider_id`,`school_slider`.`slider_caption` AS `slider_caption`,`language_school`.`school_id` AS `school_id`,`language_school`.`school_name` AS `school_name`,`school_slider_photo`.`slider_photo_id` AS `slider_photo_id`,`school_slider_photo`.`slider_big_photo` AS `slider_big_photo`,`school_slider_photo`.`slider_thumb_photo` AS `slider_thumb_photo` from ((`language_school` join `school_slider`) join `school_slider_photo`) where ((`language_school`.`school_id` = `school_slider`.`school_id`) and (`school_slider`.`slider_id` = `school_slider_photo`.`slider_id`));
 
 -- --------------------------------------------------------
 

@@ -168,6 +168,27 @@ class model_killer_library extends CI_Model {
 	}
 
 
+	// bu metod, codeigniter ın bi bug ından ötürü zorunlu olarak eklenmiştir.
+	public function readParentRow($record_id = NULL)
+	{
+		if (($record_id == NULL))
+		{
+			$query = $this->db->select('*')->from($this->table_name)->get();
+			if ($query->num_rows()>0)
+				return $query->result_array();
+			else
+				return NULL;
+		}
+		else
+		{
+			$query = $this->db->select('*')->from($this->table_name)->where($this->name_of_id_column, $record_id)->get();
+			if($query->num_rows()>0)
+				return $query->result_array();
+			else
+				return NULL;			
+		}
+	}
+
 	public function __destruct()
 	{
 		unset($this->table_name);

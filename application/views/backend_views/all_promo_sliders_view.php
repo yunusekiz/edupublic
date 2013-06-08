@@ -2,7 +2,7 @@
 				
 				<div class="content-box-header">
 					
-					<h3><font style="margin-left:270px;">Kayıtlı Tüm Dil Okulları</font></h3>
+					<h3><font style="margin-left:270px;">Kayıtlı Tüm Dil Promo Slider Metinleri</font></h3>
 					
 					<div class="clear"></div>
 					
@@ -21,41 +21,35 @@
 								{all_items_header_css}
 									<th>Düzenle</th>
 								    <th><font style="margin-left:-2px; margin-right:20px;">Sil</font></th>
-								    <th><font style="margin-left:-8px; margin-right:10px;">Foto. Yükle</font></th>
-								    <th><font style="margin-left:0px; margin-right:0px;">Mevcut Foto.</font></th>
-								    <th>İsim</th>
-								    <th>Ülke</th>
-								    <th>Detay-Başlık</th>
+								    <th></th>
+								    <th><font style="margin-left:0px; margin-right:0px;">Büyük Metin</font></th>
+								    <th>Küçük Metin (üst)</th>
+								    <th></th>
+								    <th>Küçük Metin (alt)</th>
 								{/all_items_header_css}
 								</tr>	
 							</thead>
 						 
 						 
 							<tbody>
-								 {items}
+								 {all_items}
 								<tr>
 									<td>
-										<a href="{backend_base}school/updateItemDetailForm/{school_id}" title="Düzenle"><img src="{base}assets/backend_assets/images/icons/pencil.png" alt="Düzenle" /></a>
+										<a href="{backend_base}promo_slider/updateItemDetailForm/{slider_id}" title="Düzenle"><img src="{base}assets/backend_assets/images/icons/pencil.png" alt="Düzenle" /></a>
 									</td>
 									
 									<td>
-										<a href="{backend_base}school/deleteItem/{school_id}" title="Sil"><img src="{base}assets/backend_assets/images/icons/cross.png" alt="Sil" /></a>
+										<a href="{backend_base}promo_slider/deleteItem/{slider_id}" title="Sil"><img src="{base}assets/backend_assets/images/icons/cross.png" alt="Sil" /></a>
 									</td>
 
-									<td>
-										<a href="{backend_base}school/changeItemPhotoForm/{school_id}/{school_photo_id}" title="Fotoğraf Yükle"><img src="{base}assets/backend_assets/images/icons/up_2.png" alt="Fotoğraf Yükle" /></a>
-									</td>
+									<td></td>
 
-									<td class="cocukdiv_image">
-										<a href="{base}{school_big_photo}" title="{school_name}">
-										 	<img src="{base}{school_thumb_photo}" width="45" height="45" style="margin-bottom:-8px; margin-right:-5px;" title="mevcut fotoğraf" />
-										</a>
-									</td>
-									<td>{school_name}</td>
-									<td>{country_name}</td>
-									<td>{school_summary}</td>
+									<td>{big_text}</td>
+									<td>{little_text_1}</td>
+									<td></td>
+									<td>{little_text_2}</td>
 								</tr>
-								 {/items}
+								 {/all_items}
 
 							</tbody>
 							

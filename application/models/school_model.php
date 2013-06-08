@@ -34,7 +34,7 @@ class school_model extends CI_Model {
 			$parent_id = $this->last_record_id;
 
 		$insert_data = array(
-								'school_id'				=> $this->last_record_id,
+								'school_id'				=> $parent_id,
 								'school_big_photo'		=> $school_big_photo,
 								'school_thumb_photo'	=> $school_thumb_photo
 							);
@@ -71,6 +71,13 @@ class school_model extends CI_Model {
 		$name_of_id_column = 'school_photo_id';
 		$table_name = 'language_school_photo';
 		return $this->model_killer_library->deleteRow($row_id, $name_of_id_column, $table_name);
-	}	
+	}
+
+	public function readParentRow()
+	{
+        $this->model_killer_library->setTableName('country');
+        $this->model_killer_library->setNameOfIdColumn('country_id');
+        return $this->model_killer_library->readParentRow();		
+	}
 
 }

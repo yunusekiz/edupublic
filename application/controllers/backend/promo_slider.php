@@ -1,10 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class country extends CI_Controller {
+class promo_slider extends CI_Controller {
 	
 	protected $parser_data;
-
-	protected $row_data;
 	
 	public function index()
 	{
@@ -26,62 +24,68 @@ class country extends CI_Controller {
 		}
 
 		$this->load->helper('filter_killer');
-		$this->load->model('country_model');	
+		$this->load->helper('delete_file_killer');
+
+		$this->load->model('promo_slider_model');
 		
 		$this->parser_data['base'] = base_url();
-		$this->parser_data['backend_base'] = base_url().'backend/';			
+		$this->parser_data['backend_base'] = base_url().'backend/';
 
 		$this->load->library('jquery_notification_library');
 		$this->jquery_notification_library->setParserData($this->parser_data);
-
 	}
 
-	public function addCountry()
+	public function addPromoSlider()
 	{
 		// admin panelinin ilgili view lerini yükler
 		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
 		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
-		$this->parser->parse('backend_views/add_country_view',$this->parser_data);
+		$this->parser->parse('backend_views/add_promo_slider_view',$this->parser_data);
 		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);
 	}
 
-
-	public function controlCountry()
+	public function controlPromoSlider()
 	{
-		$country_name_field = $this->input->post('country_name_field');
+		$big_text_field 		= $this->input->post('big_text_field');
+		$little_text_1_field 	= $this->input->post('little_text_1_field');
+		$little_text_2_field 	= $this->input->post('little_text_2_field');
 
-		if (($country_name_field!='')) 
+		if (($big_text_field!='') && ($little_text_1_field!='') && ($little_text_2_field!='')) 
 		{
-			$css_filter = filterForeignChars($country_name_field);
-			
-			$insert_item_detail_to_db = $this->country_model->insertRow($country_name_field, $css_filter);
+			$this->load->model('promo_slider_model');
 
-			if ($insert_item_detail_to_db==TRUE) // item detail ler db ye insert edilmişse, item photo bilgilerini db ye insert eder 
+			$add_promo_slider = $this->promo_slider_model->insertNewPromoSlider(
+																				 $big_text_field,
+																				 $little_text_1_field,
+																				 $little_text_2_field
+																				);
+			if ($add_promo_slider == TRUE) 
 			{
 				$message = 'Tebrikler! Kayıt Başarılı.';
-				$return_path = 'addCountry';
-				$this->jquery_notification_library->successMessage($message, $return_path,1);
+				$return_path = 'addPromoSlider';
+				$this->jquery_notification_library->successMessage($message, $return_path,2);				
 			}
 			else
 			{
 				$message = 'Form Bilgileri Veritabanına Kaydedilemedi';
-				$return_path = 'addCountry';
+				$return_path = 'addPromoSlider';
 				$this->jquery_notification_library->errorMessage($message, $return_path,2);					
 			}
 		}
 		else
 		{
 			$message = 'Lütfen Boş Alan Bırakmayın';
-			$return_path = 'addCountry';
+			$return_path = 'addPromoSlider';
 			$this->jquery_notification_library->errorMessage($message, $return_path,0.2);
-		}
-	}
+		}	
+
+	}	
 
 	public function allItems()
 	{
-		if ($this->country_model->readRow()!=NULL) 
+		if ($this->promo_slider_model->readRow()!=NULL) 
 		{
-			$this->parser_data['all_items'] = $this->country_model->readRow();
+			$this->parser_data['all_items'] = $this->promo_slider_model->readRow();
 			$this->parser_data['all_items_header_css']  = array(array());
 		}
 		else
@@ -89,20 +93,21 @@ class country extends CI_Controller {
 			$this->parser_data['all_items'] = array();	
 			$this->parser_data['all_items_header_css']  = array();	
 		}
+
 		// admin panelinin ilgili view lerini yükler
 		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
 		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
-		$this->parser->parse('backend_views/all_countries_view',$this->parser_data);
+		$this->parser->parse('backend_views/all_promo_sliders_view',$this->parser_data);
 		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);		
 	}
 
 	public function updateItemDetailForm($id)
 	{
-		$this->parser_data['item_detail'] = $this->country_model->readRow($id);
+		$this->parser_data['item_detail'] = $this->promo_slider_model->readRow($id);
 		
 		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
 		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
-		$this->parser->parse('backend_views/update_country_detail_view',$this->parser_data);
+		$this->parser->parse('backend_views/update_promo_slider_detail_view',$this->parser_data);
 		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);			
 	}
 
@@ -110,13 +115,16 @@ class country extends CI_Controller {
 	{
 		$id = $this->input->post('id');
 
-		$country_name_field = $this->input->post('country_name_field');
+		$big_text_field 		= $this->input->post('big_text_field');
+		$little_text_1_field 	= $this->input->post('little_text_1_field');
+		$little_text_2_field 	= $this->input->post('little_text_2_field');
 
-		if (($country_name_field!='')) 
+		if (($big_text_field!='') && ($little_text_1_field!='') && ($little_text_2_field!='')) 
 		{
-			$css_filter = filterForeignChars($country_name_field);
 
-			$update_item_detail = $this->country_model->updateRow($id, $country_name_field, $css_filter);
+			$update_item_detail = $this->promo_slider_model->updatePromoSlider($id, $big_text_field,
+																			   $little_text_1_field, $little_text_2_field
+																			  );
 			if ($update_item_detail == TRUE) 
 			{
 				$message = 'Kayıt Güncelleme Başarılı..!';
@@ -135,8 +143,24 @@ class country extends CI_Controller {
 			$message = 'Lütfen Boş Alan Bırakmayın';
 			$return_path = 'updateItemDetailForm/'.$id;
 			$this->jquery_notification_library->errorMessage($message, $return_path,1);			
-		}	
-	}			
+		}
+	}
+
+	public function deleteItem($id)
+	{
+		if ($this->promo_slider_model->deleteRow($id) == TRUE)
+		{
+			$message = 'Kayıt Silme Başarılı..!';
+			$return_path = '../allItems';
+			$this->jquery_notification_library->successMessage($message, $return_path,1);					
+		}
+		else
+		{
+			$message = 'HATA:: Kayıt Silme Başarısız..!';
+			$return_path = '../allItems';
+			$this->jquery_notification_library->errorMessage($message, $return_path,1);					
+		}
+	}
 
 }
 
