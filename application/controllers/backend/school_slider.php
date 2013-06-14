@@ -59,6 +59,7 @@ class school_slider extends CI_Controller {
 		if (($school_field!=0)&&($school_slider_caption_field!='')) 
 		{
 			$image_name = filterForeignChars($school_slider_caption_field);
+			$css_filter = $image_name;
 
 			$array = array(
 							'image_form_field'	=>	'school_slider_photo_field',
@@ -83,7 +84,8 @@ class school_slider extends CI_Controller {
 				$thumb_img_data_for_db	= $this->image_upload_resize_library->getSizedThumbImgNameForDB();
 
 				$insert_item_detail_to_db = $this->school_slider_model->insertNewSchoolSlider($school_field,
-																							  $school_slider_caption_field);
+																							  $school_slider_caption_field,
+																							  $css_filter);
 				if ($insert_item_detail_to_db==TRUE) // item detail ler db ye insert edilmişse, item photo bilgilerini db ye insert eder 
 				{
 					$insert_item_photo_to_db = $this->school_slider_model->insertNewSchoolSliderPhoto($big_img_data_for_db, $thumb_img_data_for_db);
@@ -167,7 +169,8 @@ class school_slider extends CI_Controller {
 			else
 				$school_id = $school_id_hidden;
 
-			$update_item_detail = $this->school_slider_model->updateSchoolSliderDetail($id, $school_id, $school_slider_caption_field);
+			$css_filter = filterForeignChars($school_slider_caption_field);
+			$update_item_detail = $this->school_slider_model->updateSchoolSliderDetail($id, $school_id, $school_slider_caption_field, $css_filter);
 			if ($update_item_detail == TRUE) 
 			{
 				$message = 'Kayıt Güncelleme Başarılı..!';

@@ -14,11 +14,12 @@ class school_slider_model extends CI_Model {
         $this->model_killer_library->setViewTableName('school_slider_view');
     }
 
-	public function insertNewSchoolSlider($school_id, $slider_caption)
+	public function insertNewSchoolSlider($school_id, $slider_caption, $css_filter)
 	{
 		$insert_data = array(
 								'school_id' 		=> $school_id,
-								'slider_caption' 	=> $slider_caption
+								'slider_caption' 	=> $slider_caption,
+								'css_filter'		=> $css_filter
 							);
 
 		$this->model_killer_library->insertNewRow($insert_data);
@@ -45,15 +46,15 @@ class school_slider_model extends CI_Model {
 		return $this->model_killer_library->readRow($record_id);
 	}
 
-	public function updateSchoolSliderDetail($slider_id, $school_id, $slider_caption)
+	public function updateSchoolSliderDetail($slider_id, $school_id, $slider_caption, $css_filter)
 	{
 		$update_data = array(
 								'school_id' 		=> $school_id,
-								'slider_caption' 	=> $slider_caption
+								'slider_caption' 	=> $slider_caption,
+								'css_filter'		=> $css_filter
 							);
 
 		return $this->model_killer_library->updateRow($slider_id, $update_data);
-
 	}
 
 	public function deleteRow($row_id)
@@ -73,6 +74,6 @@ class school_slider_model extends CI_Model {
         $this->model_killer_library->setTableName('language_school');
         $this->model_killer_library->setNameOfIdColumn('school_id');
         return $this->model_killer_library->readParentRow();		
-	}	
+	}
 
 }

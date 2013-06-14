@@ -447,7 +447,7 @@ CREATE TABLE IF NOT EXISTS `visa_view` (
 --
 DROP TABLE IF EXISTS `feedback_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `feedback_view` AS select `feedback`.`fb_id` AS `fb_id`,`feedback`.`fb_student_name` AS `fb_student_name`,`feedback`.`fb_student_surname` AS `fb_student_surname`,`feedback`.`fb_title` AS `fb_title`,`feedback`.`fb_detail` AS `fb_detail`,`feedback`.`fb_country` AS `fb_country`,`feedback`.`fb_lang_school` AS `fb_lang_school`,`feedback_photo`.`fb_photo_id` AS `fb_photo_id`,`feedback_photo`.`fb_big_photo` AS `fb_big_photo`,`feedback_photo`.`fb_thumb_photo` AS `fb_thumb_photo` from (`feedback` join `feedback_photo`) where (`feedback`.`fb_id` = `feedback_photo`.`fb_id`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIEW `feedback_view` AS select `feedback`.`fb_id` AS `fb_id`,`feedback`.`fb_student_name` AS `fb_student_name`,`feedback`.`fb_student_surname` AS `fb_student_surname`,`feedback`.`fb_title` AS `fb_title`,`feedback`.`fb_detail` AS `fb_detail`,`feedback`.`fb_country` AS `fb_country`,`feedback`.`fb_lang_school` AS `fb_lang_school`,`feedback_photo`.`fb_photo_id` AS `fb_photo_id`,`feedback_photo`.`fb_big_photo` AS `fb_big_photo`,`feedback_photo`.`fb_thumb_photo` AS `fb_thumb_photo` from (`feedback` join `feedback_photo`) where (`feedback`.`fb_id` = `feedback_photo`.`fb_id`);
 
 -- --------------------------------------------------------
 
@@ -456,7 +456,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `language_school_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `language_school_view` AS select `language_school`.`school_id` AS `school_id`,`language_school`.`school_name` AS `school_name`,`country`.`country_id` AS `country_id`,`country`.`country_name` AS `country_name`,`language_school`.`school_summary` AS `school_summary`,`language_school`.`school_detail` AS `school_detail`,`language_school`.`css_filter` AS `school_css`,`country`.`css_filter` AS `country_css`,`language_school_photo`.`school_photo_id` AS `school_photo_id`,`language_school_photo`.`school_big_photo` AS `school_big_photo`,`language_school_photo`.`school_thumb_photo` AS `school_thumb_photo` from ((`country` join `language_school`) join `language_school_photo`) where ((`country`.`country_id` = `language_school`.`country_id`) and (`language_school`.`school_id` = `language_school_photo`.`school_id`));
+CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIEW `language_school_view` AS select `language_school`.`school_id` AS `school_id`,`language_school`.`school_name` AS `school_name`,`country`.`country_id` AS `country_id`,`country`.`country_name` AS `country_name`,`language_school`.`school_summary` AS `school_summary`,`language_school`.`school_detail` AS `school_detail`,`language_school`.`css_filter` AS `school_css`,`country`.`css_filter` AS `country_css`,`language_school_photo`.`school_photo_id` AS `school_photo_id`,`language_school_photo`.`school_big_photo` AS `school_big_photo`,`language_school_photo`.`school_thumb_photo` AS `school_thumb_photo` from ((`country` join `language_school`) join `language_school_photo`) where ((`country`.`country_id` = `language_school`.`country_id`) and (`language_school`.`school_id` = `language_school_photo`.`school_id`));
 
 -- --------------------------------------------------------
 
@@ -465,7 +465,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `school_slider_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `school_slider_view` AS select `school_slider`.`slider_id` AS `slider_id`,`school_slider`.`slider_caption` AS `slider_caption`,`school_slider`.`css_filter` AS `slider_css_filter`,`language_school`.`school_id` AS `school_id`,`language_school`.`school_name` AS `school_name`,`language_school`.`css_filter` AS `school_css_filter`,`school_slider_photo`.`slider_photo_id` AS `slider_photo_id`,`school_slider_photo`.`slider_big_photo` AS `slider_big_photo`,`school_slider_photo`.`slider_thumb_photo` AS `slider_thumb_photo` from ((`language_school` join `school_slider`) join `school_slider_photo`) where ((`language_school`.`school_id` = `school_slider`.`school_id`) and (`school_slider`.`slider_id` = `school_slider_photo`.`slider_id`));
+CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIEW `school_slider_view` AS select `school_slider`.`slider_id` AS `slider_id`,`school_slider`.`slider_caption` AS `slider_caption`,`school_slider`.`css_filter` AS `slider_css_filter`,`language_school`.`school_id` AS `school_id`,`language_school`.`school_name` AS `school_name`,`language_school`.`css_filter` AS `school_css_filter`,`school_slider_photo`.`slider_photo_id` AS `slider_photo_id`,`school_slider_photo`.`slider_big_photo` AS `slider_big_photo`,`school_slider_photo`.`slider_thumb_photo` AS `slider_thumb_photo` from ((`language_school` join `school_slider`) join `school_slider_photo`) where ((`language_school`.`school_id` = `school_slider`.`school_id`) and (`school_slider`.`slider_id` = `school_slider_photo`.`slider_id`));
 
 -- --------------------------------------------------------
 
@@ -474,7 +474,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `team_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `team_view` AS select `team`.`t_mem_id` AS `t_mem_id`,`team`.`t_mem_name` AS `t_mem_name`,`team`.`t_mem_surname` AS `t_mem_surname`,`team`.`t_mem_position_title` AS `t_mem_position_title`,`team`.`t_mem_position_detail` AS `t_mem_position_detail`,`team`.`t_mem_facebook` AS `t_mem_facebook`,`team`.`t_mem_twitter` AS `t_mem_twitter`,`team`.`t_mem_linkedin` AS `t_mem_linkedin`,`team_photo`.`t_mem_photo_id` AS `t_mem_photo_id`,`team_photo`.`t_mem_big_photo` AS `t_mem_big_photo`,`team_photo`.`t_mem_thumb_photo` AS `t_mem_thumb_photo` from (`team` join `team_photo`) where (`team`.`t_mem_id` = `team_photo`.`t_mem_id`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIEW `team_view` AS select `team`.`t_mem_id` AS `t_mem_id`,`team`.`t_mem_name` AS `t_mem_name`,`team`.`t_mem_surname` AS `t_mem_surname`,`team`.`t_mem_position_title` AS `t_mem_position_title`,`team`.`t_mem_position_detail` AS `t_mem_position_detail`,`team`.`t_mem_facebook` AS `t_mem_facebook`,`team`.`t_mem_twitter` AS `t_mem_twitter`,`team`.`t_mem_linkedin` AS `t_mem_linkedin`,`team_photo`.`t_mem_photo_id` AS `t_mem_photo_id`,`team_photo`.`t_mem_big_photo` AS `t_mem_big_photo`,`team_photo`.`t_mem_thumb_photo` AS `t_mem_thumb_photo` from (`team` join `team_photo`) where (`team`.`t_mem_id` = `team_photo`.`t_mem_id`);
 
 -- --------------------------------------------------------
 
@@ -483,7 +483,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_table_of_team`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_table_of_team` AS select `team`.`t_mem_id` AS `t_mem_id`,`team`.`t_mem_name` AS `t_mem_name`,`team`.`t_mem_surname` AS `t_mem_surname`,`team`.`t_mem_position_title` AS `t_mem_position_title`,`team`.`t_mem_position_detail` AS `t_mem_position_detail`,`team`.`t_mem_facebook` AS `t_mem_facebook`,`team`.`t_mem_twitter` AS `t_mem_twitter`,`team`.`t_mem_linkedin` AS `t_mem_linkedin`,`team_photo`.`t_mem_big_photo` AS `t_mem_big_photo`,`team_photo`.`t_mem_thumb_photo` AS `t_mem_thumb_photo` from (`team` join `team_photo`) where (`team`.`t_mem_id` = `team_photo`.`t_mem_id`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIEW `view_table_of_team` AS select `team`.`t_mem_id` AS `t_mem_id`,`team`.`t_mem_name` AS `t_mem_name`,`team`.`t_mem_surname` AS `t_mem_surname`,`team`.`t_mem_position_title` AS `t_mem_position_title`,`team`.`t_mem_position_detail` AS `t_mem_position_detail`,`team`.`t_mem_facebook` AS `t_mem_facebook`,`team`.`t_mem_twitter` AS `t_mem_twitter`,`team`.`t_mem_linkedin` AS `t_mem_linkedin`,`team_photo`.`t_mem_big_photo` AS `t_mem_big_photo`,`team_photo`.`t_mem_thumb_photo` AS `t_mem_thumb_photo` from (`team` join `team_photo`) where (`team`.`t_mem_id` = `team_photo`.`t_mem_id`);
 
 -- --------------------------------------------------------
 
@@ -492,7 +492,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `visa_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `visa_view` AS select `visa`.`visa_id` AS `visa_id`,`visa`.`visa_title` AS `visa_title`,`visa`.`visa_detail` AS `visa_detail`,`visa`.`visa_css_filter` AS `visa_css_filter`,`visa_photo`.`visa_photo_id` AS `visa_photo_id`,`visa_photo`.`visa_big_photo` AS `visa_big_photo`,`visa_photo`.`visa_thumb_photo` AS `visa_thumb_photo` from (`visa` join `visa_photo`) where (`visa`.`visa_id` = `visa_photo`.`visa_id`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIEW `visa_view` AS select `visa`.`visa_id` AS `visa_id`,`visa`.`visa_title` AS `visa_title`,`visa`.`visa_detail` AS `visa_detail`,`visa`.`visa_css_filter` AS `visa_css_filter`,`visa_photo`.`visa_photo_id` AS `visa_photo_id`,`visa_photo`.`visa_big_photo` AS `visa_big_photo`,`visa_photo`.`visa_thumb_photo` AS `visa_thumb_photo` from (`visa` join `visa_photo`) where (`visa`.`visa_id` = `visa_photo`.`visa_id`);
 
 --
 -- Dökümü yapılmış tablolar için kısıtlamalar

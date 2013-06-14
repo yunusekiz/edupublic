@@ -1,4 +1,5 @@
-	<div class="page pad-top-page" id="about" >
+<!--   ################################## our_team start ##################################-->
+  <div class="page pad-top-page" id="about" >
     <section class="container-fluid full-bg">
       <div class="row-fluid">
         <section class="container">
@@ -30,3 +31,4 @@
       </div>
     </section>
   </div> <!-- page : ends -->
+<!--   ################################## our_team end ##################################--> 

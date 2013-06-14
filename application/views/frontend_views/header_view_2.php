@@ -49,32 +49,33 @@
 	<!-- Primary Page Layout
 	================================================== -->
 				
-<!-- 
+
   <ul class="mobile-header visible-phone visible-tablet"> 
     <li>
         <img class="mob-logo" src="{base}images/mob-logo.png" alt="edupublic logo" title="edupublic" /><br/> -->
         <!-- Start Dropmenu for mobile -->  
-<!--         <select class="dropmenu" name="dropmenu" onChange="moveTo(this.value)">
+         <select class="dropmenu" name="dropmenu" onChange="moveTo(this.value)">
           <option value="" selected="selected">MENÜ</option>
-          <option value="#intro">ANASAYFA</option>
-          <option value="#portfolio">DİL OKULLARI</option> 
-          <option value="#services">VİZELER</option>
-          <option value="#features">BİLDİRİMLER</option>
-          <option value="#about">EKİBİMİZ</option>
-          <option value="#contact">İLETİŞİM</option> 
+          <option value="{base}#intro">ANASAYFA</option>
+          <option value="{base}#portfolio">DİL OKULLARI</option> 
+          <option value="{base}#services">VİZELER</option>
+          <option value="{base}#features">BİLDİRİMLER</option>
+          <option value="{base}#about">EKİBİMİZ</option>
+          <option value="{base}#contact">İLETİŞİM</option> 
         </select> -->
         <!-- End Dropmenu for mobile -->
-<!--     </li>
-  </ul> -->
+     </li>
+  </ul> 
 
-<!-- 	<header class="masthead visible-desktop">
+	<header class="masthead visible-desktop">
 		<nav class="links desktop-nav">
-			<a class="align-left" title="Anasayfa" href="#intro">ANASAYFA</a>
-      <a class="align-left to-first-page" title="Dil Okulları" href="#portfolio" >DİLOKULLARI</a>
-      <a class="align-left" title="Vizeler" href="#services">VİZELER</a>
-			<a id="logo" href="#"><img alt="edupublic logo" title="edupublic" src="{base}images/logo.png"/></a>
-      <a class="align-right" title="Bildirimler" href="#features">BİLDİRİMLER</a>
-      <a class="align-right" title="Ekibimiz" href="#about">EKİBİMİZ</a>
-			<a class="align-right" title="İletişim" href="#contact">İLETİŞİM</a>
+			<a class="align-left" title="Anasayfa" href="{base}#intro">ANASAYFA</a>
+      <a class="align-left to-first-page" title="Dil Okulları" href="{base}#portfolio" >DİLOKULLARI</a>
+      <a class="align-left" title="Vizeler" href="{base}#services">VİZELER</a>
+			<a id="logo" href="{base}"><img alt="edupublic logo" title="edupublic" src="{base}images/logo.png"/></a>
+      <a class="align-right" title="Bildirimler" href="{base}#features">BİLDİRİMLER</a>
+      <a class="align-right" title="Ekibimiz" href="{base}#about">EKİBİMİZ</a>
+			<a class="align-right" title="İletişim" href="{base}#contact">İLETİŞİM</a>
 		</nav>
-	</header> -->
+	</header> 
+ <div class="page" id="intro" > 
