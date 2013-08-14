@@ -12,7 +12,7 @@
 	color: #26B1AA;
 }
 .col-blue{
-	color: #64B2D6;
+	color: #0B9AE0;
 }
 /*Font Swatches*/
 .alt-txt{
@@ -175,7 +175,7 @@ p{
 	background:#066c9e;
 }
 .features-inner{
-	background: #0b9be1;
+	background: #D82546;
 }
 .features-link{
 	color: #26B1AA;
@@ -313,13 +313,13 @@ font-size: 32px;
 	font-weight: normal;
 	color: #fff;
 }
-.web > .gallery-caps{background: #D82546}
+/*.web > .gallery-caps{background: #D82546}
 .branding > .gallery-caps{background: #5BA36A}
 .ecommerce > .gallery-caps{background: #64B2D6}
 .digital > .gallery-caps{background: #EFA856}
 .creative > .gallery-caps{background: #9469AD}
 
-
+*/
 #options{
 	background: #D82546;
 	margin-bottom: 5px;

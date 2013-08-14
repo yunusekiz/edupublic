@@ -112,12 +112,12 @@
                 <li data-transition="slideleft" data-slotamount="1" data-masterspeed="300" data-thumb="images/thumbs/thumb5.jpg">
                            
                         <div class="caption fadeout sft"  
-                             data-x="140" 
+                             data-x="125" 
                              data-y="44" 
                              data-speed="700" 
                              data-start="800" 
                              data-delay="1000"
-                             data-easing="easeOutExpo"  > <h1 class="main-heading add-top add-bottom"><span class="col-green alt-txt">{big_text}</span> <span class="col-red alt-txt">!</span></h1>
+                             data-easing="easeOutExpo"  > <h1 class="main-heading add-top add-bottom"><span class="col-green alt-txt"></span> <span class="col-blue alt-txt">{big_text}</span></h1>
                          </div>
                                         
                                         
@@ -132,7 +132,7 @@
                         </div>
 
                         <div class="caption sfr stl"  
-                             data-x="250" 
+                             data-x="240" 
                              data-y="252" 
                              data-speed="1300" 
                              data-start="1400" 
@@ -164,13 +164,13 @@
 
 
 <div class="page pad-top-page" id="portfolio" >
-    <section class="container-fluid features-inner">
+    <section class="container-fluid features-inner" style="margin-top:-85px;">
       <div class="row-fluid">
         <section class="container">
 
           <div class="row add-top">
             <article class="span12 col-white">
-            <h3 class="inner-sub-caps">Responsive Slider</h3>
+            <h3 class="inner-sub-caps">&nbsp;</h3>
             </article>
           </div>
 
@@ -179,13 +179,13 @@
             <div class="slider-wrapper theme-default">
               <div id="slider" class="nivoSlider center-mobile">
                   {school_slider_parser_data_1}
-                  <img src="{base}{slider_big_photo}" data-thumb="{base}{slider_big_photo}" alt="" title="#{slider_css_filter}" />
+                  <img src="{base}{slider_big_photo}" data-thumb="{base}{slider_big_photo}" alt="" title="#{slider_css}" />
                   {/school_slider_parser_data_1}
               </div>
 
               {school_slider_parser_data_2}
-              <div id="{slider_css_filter}" class="nivo-html-caption">
-                  <strong>{slider_caption}</strong> <a href="{base}tr/okullar/detay/{school_id}/{school_css_filter}">detaylar..</a>. 
+              <div id="{slider_css}" class="nivo-html-caption">
+                  <strong>{slider_caption}</strong> <a href="{base}tr/okullar/detay/{school_id}/{slider_css}"> detaylar..</a>. 
               </div>
               {/school_slider_parser_data_2}
             </div>
@@ -203,32 +203,67 @@
       <div class="row-fluid">
         <section class="container">
 
-          <div class="row add-bottom">
+    <div class="row add-bottom">
+    <article class="span12">
 
-
-
-            <article class="span12">
-
-              <section id="options" class="clearfix align-center">
-    
-    
+    <section id="options" class="clearfix align-center">
       <ul id="filters" class="option-set clearfix" data-option-key="filter">
-        <li class="inner-link"><a href="#filter" data-option-value="*" class="selected">Hepsi</a></li>
+        <li class="inner-link"><a href="#filter" data-option-value="*" class="selected">HEPSİ</a></li>
+        {school_country}
+        <li class="inner-link"><a href="#filter" data-option-value=".{country_css_filter}">{country_name}</a></li>
+        {/school_country}
+      </ul>
+    </section> 
+    
+    <div id="container" class="clearfix portfolio">
+    
+
+  {language_schools}
+      <a class="gallery-block" href="{school_big_photo}" data-gal="prettyPhoto[portfolio]">
+        <div class="element {country_css_filter}  height-02 " data-symbol="Cd" data-category="country_css_filter">    
+        <article class="gallery-caps">
+          <h3 id="h3_portfolio_tag">{school_name}</h3>
+        <!-- <p id="p_portfolio_tag">bu dil okulu gayet güzel düzenli odaları temiz tuvaletleri leziz</p> -->
+          <p id="p_portfolio_tag">{school_summary}</p>
+        </article>
+        <img alt="eleg by designova" title="eleg"  src="{school_thumb_photo}" />
+          <a href="http://localhost/www/edupublic_static/yenisayfa" title="detaylar için tıklayın :)">
+            <i class="icon-map-marker"></i>
+          </a>          
+        </div>
+      </a>
+  {/language_schools}
+
+  </div> 
+
+            </article>
+          </div>
+
+        </section>
+      </div>
+    </section>
+
+
+<!-- <section class="container-fluid portfolio-inner">
+      <div class="row-fluid">
+        <section class="container">
+
+    <div class="row add-bottom">
+    <article class="span12">
+
+    <section id="options" class="clearfix align-center">
+      <ul id="filters" class="option-set clearfix" data-option-key="filter">
+        <li class="inner-link"><a href="#filter" data-option-value="*" class="selected">HEPSİ</a></li>
         <li class="inner-link"><a href="#filter" data-option-value=".branding">AMERİKA</a></li>
         <li class="inner-link"><a href="#filter" data-option-value=".web">KANADA</a></li>
         <li class="inner-link"><a href="#filter" data-option-value=".ecommerce">İNGİLTERE</a></li>
         <li class="inner-link"><a href="#filter" data-option-value=".modern">ALMANYA</a></li>
         <li class="inner-link"><a href="#filter" data-option-value=".creative">FRANSA</a></li>
         <li class="inner-link"><a href="#filter" data-option-value=".modern, .creative">DİĞERLERİ</a></li>
-        
       </ul>
-
-
-  </section> <!-- #options -->
-               <div id="container" class="clearfix portfolio">
+    </section> 
     
-      
-          
+    <div id="container" class="clearfix portfolio">
     
     <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]">
       <div class="element web height-02 " data-symbol="Hg" data-category="web">
@@ -237,43 +272,9 @@
         <p  id="p_portfolio_tag">bu dil okulu gayet güzel düzenli odaları temiz tuvaletleri leziz ayrıca çok da müteşekkil ve mütevazı bir yönetim kuruluna sahiptir, tüm söyleyebileceklerimiz bunlardır ,  dahası da var ancak her doğru her yerde söylenmez ve kamil olan anlar ne demek istediğimizi</p>
       </article>
       <img alt="eleg by designova" title="eleg"  src="images/portfolio/p01.jpg"/>
-      <a href="http://localhost/www/edupublic_static/yenisayfa33" title="detaylar için tıklayın :)"><i class="icon-map-marker"></i></a>
-    </div></a>
-
-    
-      
-          
-  <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]">
-    <div class="element branding height-01" data-symbol="Te" data-category="branding ">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p02.jpg"    />
     </div>
   </a>
-    
-      
           
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]">
-      <div class="element ecommerce height-03" data-symbol="Bi" data-category="ecommerce">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p03.jpg"    />
-    </div></a>
-    
-      
-     
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element creative height-01" data-symbol="Ca" data-category="creative">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p04.jpg"    />
-    </div></a>
-
 
 
     <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]">
@@ -283,137 +284,29 @@
         <p id="p_portfolio_tag">bu dil okulu gayet güzel düzenli odaları temiz tuvaletleri leziz ayrıca çok da müteşekkil ve mütevazı bir yönetim kuruluna sahiptir, tüm söyleyebileceklerimiz bunlardır ,  dahası da var ancak her doğru her yerde söylenmez ve kamil olan anlar ne demek istediğimizi</p>
       </article>
       <img alt="eleg by designova" title="eleg"   src="images/portfolio/p05.jpg"    />
-      <a href="http://localhost/www/edupublic_static/yenisayfa" title="detaylar için tıklayın :)">
-        <i class="icon-map-marker"></i>
-      </a>
-    </div>
-       <a href="http://localhost/www/edupublic_static/yenisayfa" title="detaylar için tıklayın :)">
-        <i class="icon-map-marker"></i>
-      </a>   
+    </div>  
   </a>
+<a href="http://localhost/www/edupublic_static/yenisayfa" title="detaylar için tıklayın :)">
+    <i class="icon-map-marker"></i>
+</a> 
     
-      
           
-    
-      
-          
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element digital height-01" data-symbol="Re" data-category="digital">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p06.jpg"    />
-    </div></a>
-    
-      
-          
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element ecommerce height-02 " data-symbol="Tl" data-category="ecommerce">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p07.jpg"    />
-    </div></a>
-    
-      
-          
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element branding  height-03" data-symbol="Sb" data-category="branding ">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p08.jpg"    />
-    </div></a>
-    
-      
-          
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element web height-01" data-symbol="Co" data-category="web">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p09.jpg"    />
-    </div></a>
-    
-      
-          
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element digital height-03" data-symbol="Lu" data-category="digital">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p10.jpg"    />
-    </div></a>
-    
 
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element creative  height-02 " data-symbol="Cd" data-category="creative">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p11.jpg"    />
-    </div></a>
-    
-      
-          
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element branding height-01" data-symbol="Ca" data-category="branding">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p12.jpg"    />
-    </div></a>
-    
-      
-          
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element web height-01" data-symbol="Re" data-category="web">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p13.jpg"    />
-    </div></a>
-    
-      
-          
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element ecommerce height-02 " data-symbol="Tl" data-category="ecommerce">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p14.jpg"    />
-    </div></a>
-    
-      
-          
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element digital  height-03" data-symbol="Sb" data-category="digital ">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p15.jpg"    />
-    </div></a>
-    
-      
-          
-    <a class="gallery-block" href="images/portfolio/full/dummy.jpg" data-gal="prettyPhoto[portfolio]"><div class="element web height-01" data-symbol="Co" data-category="web">
-      <article class="gallery-caps">
-        <h3>Başlık</h3>
-        <p>Açıklama</p>
-      </article>
-      <img alt="eleg by designova" title="eleg"   src="images/portfolio/p16.jpg"    />
-    </div></a>
     
       
     
-  </div> <!-- #container -->
+  </div> 
 
             </article>
-          </div><!-- row : ends -->
+          </div>
 
         </section>
       </div>
-    </section>
+    </section> -->
+
+
+
+
   </div> <!-- page : ends -->
   
 

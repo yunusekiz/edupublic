@@ -36,23 +36,9 @@ class country_model extends CI_Model {
 		return $this->model_killer_library->updateRow($id, $update_data);	 
 	}
 
-	public function allItems()
+	public function readRowForDropDownList($key, $value, $record_id = NULL)
 	{
-		if ($this->country_model->readRow()!=NULL) 
-		{
-			$this->parser_data['items'] = $this->school_model->readRow();
-			$this->parser_data['all_items_header_css']  = array(array());
-		}
-		else
-		{
-			$this->parser_data['items'] = array();	
-			$this->parser_data['all_items_header_css']  = array();	
-		}
-		// admin panelinin ilgili view lerini yükler
-		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
-		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
-		$this->parser->parse('backend_views/all_countries_view',$this->parser_data);
-		$this->parser->parse('backend_views/admin_footer_view',$this->parser_data);		
-	}
+		return $this->model_killer_library->readRowForDropDownList($key, $value, $record_id);
+	}	
 
 }

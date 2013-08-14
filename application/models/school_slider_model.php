@@ -14,12 +14,12 @@ class school_slider_model extends CI_Model {
         $this->model_killer_library->setViewTableName('school_slider_view');
     }
 
-	public function insertNewSchoolSlider($school_id, $slider_caption, $css_filter)
+	public function insertNewSchoolSlider($slider_caption, $slider_detail, $slider_css)
 	{
 		$insert_data = array(
-								'school_id' 		=> $school_id,
 								'slider_caption' 	=> $slider_caption,
-								'css_filter'		=> $css_filter
+								'slider_detail'		=> $slider_detail,
+								'slider_css'		=> $slider_css
 							);
 
 		$this->model_killer_library->insertNewRow($insert_data);
@@ -46,12 +46,12 @@ class school_slider_model extends CI_Model {
 		return $this->model_killer_library->readRow($record_id);
 	}
 
-	public function updateSchoolSliderDetail($slider_id, $school_id, $slider_caption, $css_filter)
+	public function updateSchoolSliderDetail($slider_id, $slider_caption, $slider_detail, $slider_css)
 	{
 		$update_data = array(
-								'school_id' 		=> $school_id,
 								'slider_caption' 	=> $slider_caption,
-								'css_filter'		=> $css_filter
+								'slider_detail'		=> $slider_detail,
+								'slider_css'		=> $slider_css
 							);
 
 		return $this->model_killer_library->updateRow($slider_id, $update_data);

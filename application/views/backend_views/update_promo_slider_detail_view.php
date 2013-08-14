@@ -20,12 +20,12 @@
 									style="color:#000;" id="large-input" name="big_text_field" value="{big_text}" />
 								</p><br /><hr><br />		
 								<p>
-									<label>Slider Küçük Metin --Üst-- (max 5 kelime) </label>               
+									<label>Slider Küçük Metin --Üst-- (max 6 kelime) </label>               
 									<input class="text-input large-input" type="text" 
 									style="color:#000;" id="large-input" name="little_text_1_field" value="{little_text_1}" />
 								</p><br />
 								<p>
-									<label>Slider Küçük Metin --Alt-- (max 5 kelime) </label>               
+									<label>Slider Küçük Metin --Alt-- (max 6 kelime) </label>               
 									<input class="text-input large-input" type="text" 
 									style="color:#000;" id="large-input" name="little_text_2_field" value="{little_text_2}" />
 								</p>									

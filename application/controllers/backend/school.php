@@ -63,10 +63,10 @@ class school extends CI_Controller {
 							'image_form_field'	=>	'school_image_form_field',
 							'upload_path'		=>	'assets/images/schools',
 							'image_name'		=>	$image_name,
-							'big_img_width'		=>	427,
-							'big_img_height'	=>	426,
-							'thumb_img_width'	=>	80,
-							'thumb_img_height'	=>	80
+							'big_img_width'		=>	800,
+							'big_img_height'	=>	600,
+							'thumb_img_width'	=>	225,
+							'thumb_img_height'	=>	225
 					 	 );
 
 			$this->load->library('image_upload_resize_library');
@@ -253,10 +253,10 @@ class school extends CI_Controller {
 							'image_form_field'	=>	'photo_field',
 							'upload_path'		=>	'assets/images/schools',
 							'image_name'		=>	$image_name.rand(),
-							'big_img_width'		=>	427,
-							'big_img_height'	=>	426,
-							'thumb_img_width'	=>	80,
-							'thumb_img_height'	=>	80
+							'big_img_width'		=>	800,
+							'big_img_height'	=>	600,
+							'thumb_img_width'	=>	225,
+							'thumb_img_height'	=>	225
 					 );
 
 		$this->load->library('image_upload_resize_library');

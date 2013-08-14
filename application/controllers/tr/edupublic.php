@@ -20,6 +20,8 @@ class edupublic extends CI_Controller {
 		$this->contact();
 		$this->promo_slider();
 		$this->language_school();
+		$this->school_slider();
+		
 		$this->visa();
 		$this->feedback();
 		$this->our_team();
@@ -79,15 +81,39 @@ class edupublic extends CI_Controller {
 		//$this->parser->parse('frontend_views/visa_view',$this->parser_data);		
 	}
 
-	protected function language_school()
+	protected function school_slider()
 	{
 		$this->load->model('school_slider_model');
-		$this->parser_data['school_slider_parser_data_1'] = $this->school_slider_model->readRow();
-		$this->parser_data['school_slider_parser_data_2'] = $this->school_slider_model->readRow();
-		//$this->parser->parse('frontend_views/language_school_view',$this->parser_data);		
+
+		if ($this->school_slider_model->readRow()!=NULL) 
+		{
+			$this->parser_data['school_slider_parser_data_1'] = $this->school_slider_model->readRow();
+			$this->parser_data['school_slider_parser_data_2'] = $this->school_slider_model->readRow();
+			//$this->parser->parse('frontend_views/language_school_view',$this->parser_data);			# code...
+		}
+		else
+		{
+			$this->parser_data['school_slider_parser_data_1'] = array(array());
+			$this->parser_data['school_slider_parser_data_2'] = array(array());
+		}
+
+	
 	}
 
-	protected function school_slider()
+	protected function language_school()
+	{
+		$this->load->model('school_model');
+		$this->parser_data['language_schools'] = $this->school_model->readRow();
+		$this->parser_data['school_country'] = $this->school_model->readRow();
+	}
+
+	protected function school_country()
+	{
+		$this->load->model('country_model');
+		$this->parser_data['school_country'] = $this->country_model->readRow();
+	}
+
+	protected function school_slider_old()
 	{
 		$this->parser->parse('frontend_views/school_slider_view',$this->parser_data);
 	}

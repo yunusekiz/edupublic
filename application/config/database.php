@@ -50,13 +50,13 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 
-/*$db['default']['username'] = 'root';
+$db['default']['username'] = 'root';
 $db['default']['password'] = '';
-$db['default']['database'] = 'edupublic';*/
+$db['default']['database'] = 'edupublic';
 
-$db['default']['username'] = 'edupub_user';
+/*$db['default']['username'] = 'edupub_user';
 $db['default']['password'] = 'user123456';
-$db['default']['database'] = 'edupub_db';
+$db['default']['database'] = 'edupub_db';*/
 
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';

@@ -4,7 +4,6 @@ class our_team_model extends CI_Model {
 
 	protected $last_record_id;
 
-
 	public function __construct()
     {
         parent::__construct();

@@ -189,6 +189,37 @@ class model_killer_library extends CI_Model {
 		}
 	}
 
+
+	// tabloadan okunan verileri Drop Down List e uygun hale getirir. verilen iki sütun ismine göre array için key => value eşlemesi yapar
+	public function readRowForDropDownList($key, $value, $record_id = NULL)
+	{
+		if ($record_id == NULL)
+		{
+			$query = $this->db->select("$key, $value")->from($this->table_name)->get();
+			if ($query->num_rows()>0)
+			{
+				$result_array = $query->result_array();
+
+				foreach ($result_array as $arr)
+				{
+					$last_array[$arr[$key]] = $arr[$value];
+				}
+				return $last_array;
+			}
+			else
+				return NULL;
+		}
+		else
+		{
+			$query = $this->db->select('*')->from($this->view_table_name)->where($this->name_of_id_column, $record_id)->get();
+			if($query->num_rows()>0)
+				return $query->result_array();
+			else
+				return NULL;			
+		}
+	}	
+
+
 	public function __destruct()
 	{
 		unset($this->table_name);
