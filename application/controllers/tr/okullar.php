@@ -34,7 +34,7 @@ class okullar extends CI_Controller {
 	protected function footer()
 	{
 		$this->load->model('contact_model');
-		$this->parser_data['contact_parser_data'] = $this->contact_model->readRow();	
+		$this->parser_data['contact_parser_data'] = $this->contact_model->readAllRow();	
 		$this->parser->parse('frontend_views/footer_view_2',$this->parser_data);
 	}
 

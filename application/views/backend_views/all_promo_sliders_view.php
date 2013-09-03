@@ -2,7 +2,7 @@
 				
 				<div class="content-box-header">
 					
-					<h3><font style="margin-left:270px;">Kayıtlı Tüm Dil Promo Slider Metinleri</font></h3>
+					<h3><font style="margin-left:270px;">Kayıtlı Tüm Dil  Metin Sliderları</font></h3>
 					
 					<div class="clear"></div>
 					

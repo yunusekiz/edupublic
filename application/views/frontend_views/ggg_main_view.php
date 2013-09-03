@@ -185,7 +185,7 @@
 
               {school_slider_parser_data_2}
               <div id="{slider_css}" class="nivo-html-caption">
-                  <strong>{slider_caption}</strong> <a href="{base}tr/okullar/detay/{school_id}/{slider_css}"> detaylar..</a>. 
+                  <strong>{slider_caption}</strong> <a href="{base}tr/haberler/detay/{slider_id}/{slider_css}"> detaylar..</a>. 
               </div>
               {/school_slider_parser_data_2}
             </div>
@@ -227,7 +227,7 @@
           <p id="p_portfolio_tag">{school_summary}</p>
         </article>
         <img alt="eleg by designova" title="eleg"  src="{school_thumb_photo}" />
-          <a href="http://localhost/www/edupublic_static/yenisayfa" title="detaylar için tıklayın :)">
+          <a href="{base}tr/okullar/detay/{school_id}/{school_css}" title="detaylar için tıklayın :)">
             <i class="icon-map-marker"></i>
           </a>          
         </div>
@@ -392,7 +392,7 @@
 
           <div class="row add-top add-bottom">
             <article class="span12">
-              <h1 class="main-heading col-white">Bildirimler</h1>
+              <h1 class="main-heading col-white">Sizden Gelenler</h1>
               <div><p class="sub-heading col-white"><span class="major">Sizden</span> gelen geri dönüşlerden bazıları</p></div>
             </article>
           </div>
@@ -474,7 +474,7 @@
 
           <div class="row add-top add-bottom">
             <article class="span12">
-              <h1 class="main-heading col-white">İLETİŞİM</h1>
+              <h1 class="main-heading col-white">İletişim</h1>
               <div><p class="sub-heading col-white"><span class="major">iletişim önemli </span> mütemadiyen iletişelim </p></div>
             </article>
           </div><!-- row : ends -->

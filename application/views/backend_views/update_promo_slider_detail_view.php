@@ -1,7 +1,7 @@
 			<div class="content-box"><!-- Start Content Box -->
 				   
 			 	<div class="content-box-header">
-					<h3> <font style="margin-left:240px;">Promotion Slider Güncelleme Formu</font></h3>
+					<h3> <font style="margin-left:240px;">Metin Slider'ı Güncelleme Formu</font></h3>
 					<div class="clear"></div>
 			 	</div> <!-- End .content-box-header -->	
 				

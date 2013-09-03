@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
--- Anamakine: localhost
--- Üretim Zamanı: 14 Ağu 2013, 15:01:33
--- Sunucu sürümü: 5.5.25a
--- PHP Sürümü: 5.4.4
+-- Anamakine: 127.0.0.1
+-- Üretim Zamanı: 03 Eyl 2013, 10:41:25
+-- Sunucu sürümü: 5.5.32
+-- PHP Sürümü: 5.4.16
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Veritabanı: `edupublic`
 --
+CREATE DATABASE IF NOT EXISTS `edupublic` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `edupublic`;
 
 -- --------------------------------------------------------
 
@@ -85,10 +87,10 @@ CREATE TABLE IF NOT EXISTS `country` (
 --
 
 INSERT INTO `country` (`country_id`, `country_name`, `css_filter`) VALUES
-(5, 'amerika birleşik devletleri', 'amerika-birlesik-devletleri'),
-(6, 'arjantin', 'arjantin'),
-(7, 'fransa', 'fransa'),
-(8, 'birleşik krallık', 'birlesik-krallik');
+(5, 'AMERİKA BİRLEŞİK DEVLETLERİ', 'AMERIKA-BIRLESIK-DEVLETLERI'),
+(6, 'ARJANTİN', 'ARJANTIN'),
+(7, 'FRANSA', 'FRANSA'),
+(8, 'BİRLEŞİK KRALLIK', 'BIRLESIK-KRALLIK');
 
 -- --------------------------------------------------------
 
@@ -112,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 --
 
 INSERT INTO `feedback` (`fb_id`, `fb_student_name`, `fb_student_surname`, `fb_title`, `fb_detail`, `fb_country`, `fb_lang_school`) VALUES
-(1, 'öğrenci adı', ' öğrenci soyadı', ' bildlirim başlık', 'bildirim deratrsdsmosderatrsdsmosderatrsdsmosderatrsdsmoslövlderatrsdsmoslkdovderatrsdsmosderatrsdsmosderatrsdsmos', 'örnek bildirim ülke', 'örnek bildirim dilokulu');
+(1, 'öğrenci adı', ' öğrenci soyadı', ' bildirim başlık', 'bildirim deratrsdsmosderatrsdsmosderatrsdsmosderatrsdsmoslövlderatrsdsmoslkdovderatrsdsmosderatrsdsmosderatrsdsmos', 'örnek bildirim ülke', 'örnek bildirim dilokulu');
 
 -- --------------------------------------------------------
 
@@ -253,7 +255,14 @@ CREATE TABLE IF NOT EXISTS `school_slider` (
   `slider_detail` text NOT NULL,
   `slider_css` text NOT NULL,
   PRIMARY KEY (`slider_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Tablo döküm verisi `school_slider`
+--
+
+INSERT INTO `school_slider` (`slider_id`, `slider_caption`, `slider_detail`, `slider_css`) VALUES
+(4, 'slider ilk başlık', 'ben bu slidera başlarken şöyle bir başlık düşünmüştüm ancak bi oktadan sonra karar  verdim ki bu bzim istediğimiz gibi olmayacak üstüne üstük şöyle saçma sapan olayların vukuu bulmasına da sebep olacak bundan kensinlikle adım kadar eminim bana güvenebilirsiniz erdim ki bu bzim istediğimiz gibi olmayacak üstüne üstük şöyle saçma sapan olayların vukuu bulmasına da sebep olacak bundan kensinlikle adım kadar eminim bana güvenebilirsiniz erdim ki bu bzim istediğimiz gibi olmayacak üstüne üstük şöyle saçma sapan olayların vukuu bulmasına da sebep olacak bundan kensinlikle adım kadar eminim bana güvenebilirsiniz erdim ki bu bzim istediğimiz gibi olmayacak üstüne üstük şöyle saçma sapan olayların vukuu bulmasına da sebep olacak bundan kensinlikle adım kadar eminim bana güvenebilirsiniz', 'slider-ilk-baslik');
 
 -- --------------------------------------------------------
 
@@ -268,7 +277,14 @@ CREATE TABLE IF NOT EXISTS `school_slider_photo` (
   `slider_thumb_photo` text NOT NULL,
   PRIMARY KEY (`slider_photo_id`),
   KEY `slider_id` (`slider_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Tablo döküm verisi `school_slider_photo`
+--
+
+INSERT INTO `school_slider_photo` (`slider_photo_id`, `slider_id`, `slider_big_photo`, `slider_thumb_photo`) VALUES
+(6, 4, 'assets/images/school_slider/24892_24261.jpg', 'assets/images/school_slider/thumb/24892_24261_thumb.jpg');
 
 -- --------------------------------------------------------
 

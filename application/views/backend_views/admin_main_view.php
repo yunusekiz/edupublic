@@ -22,10 +22,10 @@
 						Anasayfa Düzeni
 					</a>
 					<ul>
-						<li><a href="{base}backend/promo_slider/addPromoSlider" class="{big_slider_current}">Promosyon Sliderı Ekle</a></li>
-						<li><a href="{base}backend/school_slider/addSchoolSlider" class="{big_slider_current}">Dil Okulu Sliderı Ekle</a></li>
-						<li><a href="{base}backend/promo_slider/allItems" class="{big_slider_current}">Promosyon Sliderı Düzenle/Sil</a></li>
-						<li><a href="{base}backend/school_slider/allItems"	 class="{big_slider_current}">Dil Okulu Sliderı Düzenle/Sil</a></li>												
+						<li><a href="{base}backend/promo_slider/addPromoSlider" class="{big_slider_current}">Metin Slider'ı Ekle</a></li>
+						<li><a href="{base}backend/school_slider/addSchoolSlider" class="{big_slider_current}">Haber Slider'ı Ekle</a></li>
+						<li><a href="{base}backend/promo_slider/allItems" class="{big_slider_current}">Metin Slider'ı Düzenle/Sil</a></li>
+						<li><a href="{base}backend/school_slider/allItems"	 class="{big_slider_current}">Haber Slider'ı Düzenle/Sil</a></li>												
 					</ul>
 
 				</li>

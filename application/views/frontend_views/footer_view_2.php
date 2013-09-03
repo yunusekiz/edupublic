@@ -1,6 +1,5 @@
-  <!--   ################################## contact start ##################################-->
-  <div class="page pad-top-page" id="contact" >
-<!--     <section class="container-fluid full-bg">
+<!-- <div class="page pad-top-page" id="contact" >
+    <section class="container-fluid full-bg">
       <div class="row-fluid">
         <section class="container">
 
@@ -9,11 +8,11 @@
               <h1 class="main-heading col-white">İLETİŞİM</h1>
               <div><p class="sub-heading col-white"><span class="major">iletişim önemli </span> mütemadiyen iletişelim </p></div>
             </article>
-          </div>
-
+          </div>--><!-- row : ends -->
+<!--
         </section>
       </div>
-    </section> -->
+    </section>
 
 
     <section class="container-fluid contact-inner">
@@ -23,8 +22,8 @@
           
 
           <div class="row add-top add-bottom">
-           <div class="span8 contact"><!--Begin page content column-->
-
+           <div class="span8 contact">--><!--Begin page content column-->
+<!--
 
                     <div class="alert success" style="display: none;">
                         Mesajınız Bize Ulaştı..! :)  
@@ -33,7 +32,7 @@
           
             <h3 class="inner-sub-caps align-left">Bize Ulaşın</h3>
           
-                    <form name="myform" id="contactForm" action="processForm.php" enctype="multipart/form-data" method="post">
+                    <form name="myform" id="contactForm" action="" enctype="multipart/form-data" method="post">
 
                         <div class="alert alert-error error" id="fname" style="display: none;">
                         lütfen  İsim alanını boş bırakmayın :(
@@ -60,8 +59,8 @@
             </div>
 
 
-          <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
-{contact_parser_data}
+          <div class="span4 sidebar page-sidebar">--><!-- Begin sidebar column -->
+<!--{contact_parser_data}
 
             <h3 class="inner-sub-caps align-left">Adresimiz</h3>
             <address class="remove-bottom pad-bottom-half col-white">
@@ -76,8 +75,8 @@
             </ul>
         </div>
             
-          </div><!-- row : ends -->
-
+          </div>--><!-- row : ends -->
+<!--
         </section>
       </div>
     </section>
@@ -106,21 +105,22 @@
     </section>
 
 {/contact_parser_data}  
-  </div> <!-- page : ends -->
+  </div> --> <!-- page : ends -->
   <!--   ################################## contact end ##################################-->
 
-  <footer class="mastfoot">
+
+    <footer class="mastfoot">
       <a id="foot-logo" href="#"><img  alt="EDUPUBLIC" title="EDUPUBLIC" src="{base}images/logo.png"/></a>
       <p class="add-top-half">Copyright &copy; 2013 EDUPUBLIC.</p>
   </footer>
-	
-	
+  
+  
 
 
-	<!-- JS
-	================================================== -->
-	  <script src="{base}assets/javascripts/jquery-1.7.2.min.js"></script>
-	  <script src="{base}assets/js/bootstrap-transition.js"></script>
+  <!-- JS
+  ================================================== -->
+    <script src="{base}assets/javascripts/jquery-1.7.2.min.js"></script>
+    <script src="{base}assets/js/bootstrap-transition.js"></script>
     <script src="{base}assets/js/bootstrap-alert.js"></script>
     <script src="{base}assets/js/bootstrap-modal.js"></script>
     <script src="{base}assets/js/bootstrap-dropdown.js"></script>
@@ -133,15 +133,15 @@
     <script src="{base}assets/js/bootstrap-carousel.js"></script>
     <script src="{base}assets/js/bootstrap-typeahead.js"></script>
     <script src="{base}assets/js/bootstrap-affix.js"></script>
-  	<script src="{base}javascripts/jquery.localscroll-1.2.7-min.js"></script>
-  	<script src="{base}javascripts/jquery.scrollTo-1.4.2-min.js"></script>
+    <script src="{base}javascripts/jquery.localscroll-1.2.7-min.js"></script>
+    <script src="{base}javascripts/jquery.scrollTo-1.4.2-min.js"></script>
     <script src="{base}javascripts/jquery.prettyPhoto.js"></script> 
-	  <script src="{base}javascripts/jquery.easing.1.3.js"></script>
+    <script src="{base}javascripts/jquery.easing.1.3.js"></script>
     <script src="{base}javascripts/jquery.isotope.min.js"></script>
     <script src="{base}javascripts/fake-element.js"></script>
     <script src="{base}javascripts/form-validation.js"></script>
     <script src="{base}javascripts/waypoints.min.js"></script>
-  	<script src="{base}javascripts/scroll.js"></script>
+    <script src="{base}javascripts/scroll.js"></script>
 
     <!--
     <script src="javascripts/raphael.js"></script>
@@ -159,17 +159,17 @@
   <script type="text/javascript" src="javascripts/jquery.themepunch.plugins.min.js"></script>
     <script type="text/javascript" src="javascripts/jquery.themepunch.revolution.min.js"></script>
 
-  	<!-- Mobile Navigation Scroll Setup -->
-	<script type="text/javascript">
-    	function moveTo(contentArea){
-        	var goPosition = $(contentArea).offset().top;
-        	$('html,body').animate({ scrollTop: goPosition}, 'slow');
+    <!-- Mobile Navigation Scroll Setup -->
+  <script type="text/javascript">
+      function moveTo(contentArea){
+          var goPosition = $(contentArea).offset().top;
+          $('html,body').animate({ scrollTop: goPosition}, 'slow');
         }
     </script>
 
 
-	<!-- Sticky nav -->
-	<script>
+  <!-- Sticky nav -->
+  <script>
 
   $(document).ready(function() {
 
@@ -218,7 +218,7 @@ if ($.fn.cssOriginal!=undefined)
 
 
 
-	$(document).ready(function(){
+  $(document).ready(function(){
 
       //NAVIGATION MENU COLOR CHANGE ON CLILCK
       $('.desktop-nav a').click(function(){
@@ -228,47 +228,47 @@ if ($.fn.cssOriginal!=undefined)
         $(this).addClass(colIndex+'-link');
       })
 
-  	
-			//PORTFOLIO IMAGE HOVER
-			$('.element').mouseenter(function(){
-				$(this).find('img').stop().animate({opacity:'0'},'slow')
-				$(this).find('.gallery-caps').stop().animate({opacity:'1'},'slow')
-			})
+    
+      //PORTFOLIO IMAGE HOVER
+      $('.element').mouseenter(function(){
+        $(this).find('img').stop().animate({opacity:'0'},'slow')
+        $(this).find('.gallery-caps').stop().animate({opacity:'1'},'slow')
+      })
 
-			$('.element').mouseleave(function(){
-				$('.element').find('.gallery-caps').stop().animate({opacity:'0'},'slow')
-				$('.element').find('img').stop().animate({opacity:'1'},'slow')
-			})
+      $('.element').mouseleave(function(){
+        $('.element').find('.gallery-caps').stop().animate({opacity:'0'},'slow')
+        $('.element').find('img').stop().animate({opacity:'1'},'slow')
+      })
 
-			//PORTFOLIO FILTER ON CLICK
-			$('.inner-link').find('a').click(function(){
-				$('.inner-link').find('a').removeClass('.selected');
-				$(this).addClass('.selected');
-			})
+      //PORTFOLIO FILTER ON CLICK
+      $('.inner-link').find('a').click(function(){
+        $('.inner-link').find('a').removeClass('.selected');
+        $(this).addClass('.selected');
+      })
 
-			//Services More Content triggering
-			$('.services-more').click(function(){
-				var servIndex = $(this).attr('data-services');
-				//alert(servIndex);
-				$('#'+servIndex+'-content').slideToggle();
-			})
+      //Services More Content triggering
+      $('.services-more').click(function(){
+        var servIndex = $(this).attr('data-services');
+        //alert(servIndex);
+        $('#'+servIndex+'-content').slideToggle();
+      })
 
-		});
-	</script>
-	
-	<script>
+    });
+  </script>
+  
+  <script>
 
 // Initialize prettyPhoto plugin
-	$(".portfolio a[data-gal^='prettyPhoto']").prettyPhoto({
-		theme:'light_square', 
-		autoplay_slideshow: false, 
-		overlay_gallery: false, 
-		show_title: true
-	});
+  $(".portfolio a[data-gal^='prettyPhoto']").prettyPhoto({
+    theme:'light_square', 
+    autoplay_slideshow: false, 
+    overlay_gallery: false, 
+    show_title: true
+  });
 
 
   
-		
+    
 //MASONRY PORTFOLIO INIT:
     $(function(){
       
@@ -313,7 +313,7 @@ if ($.fn.cssOriginal!=undefined)
 
       
     });
-  </script>	
+  </script> 
 
 <!-- End Document
 ================================================== -->

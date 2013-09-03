@@ -123,8 +123,10 @@ class image_upload_resize_library{
 		$upload_config['max_width'] = '10240';
 		$upload_config['max_height'] = '7680';
 		
-		if ($this->bootstrap_data['image_name'] != NULL)
-			$upload_config['file_name'] = $this->bootstrap_data['image_name'].rand();
+		if (@$this->bootstrap_data['image_name'] != NULL)
+			$upload_config['file_name'] = @$this->bootstrap_data['image_name'].rand();
+		else
+			$upload_config['file_name'] =  rand().'_'.rand();
 
 		$image_form_field = $this->bootstrap_data['image_form_field'];
 

@@ -69,11 +69,4 @@ class school_slider_model extends CI_Model {
 		return $this->model_killer_library->deleteRow($row_id, $name_of_id_column, $table_name);
 	}
 
-	public function readParentRow()
-	{
-        $this->model_killer_library->setTableName('language_school');
-        $this->model_killer_library->setNameOfIdColumn('school_id');
-        return $this->model_killer_library->readParentRow();		
-	}
-
 }

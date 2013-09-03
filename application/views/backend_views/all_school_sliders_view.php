@@ -2,7 +2,7 @@
 				
 				<div class="content-box-header">
 					
-					<h3><font style="margin-left:270px;">Kayıtlı Tüm Dil Okulu Slider Fotoları</font></h3>
+					<h3><font style="margin-left:270px;">Kayıtlı Tüm Haber Sliderları</font></h3>
 					
 					<div class="clear"></div>
 					
@@ -25,7 +25,7 @@
 								    <th><font style="margin-left:0px; margin-right:0px;">Mevcut Foto.</font></th>
 								    <th>Slider Başlık</th>
 								    <th></th>
-								    <th>Okul Adı</th>
+								    <th></th>
 								{/all_items_header_css}
 								</tr>	
 							</thead>
@@ -53,7 +53,7 @@
 									</td>
 									<td>{slider_caption}</td>
 									<td></td>
-									<td>{school_name}</td>
+									<td></td>
 								</tr>
 								 {/all_items}
 

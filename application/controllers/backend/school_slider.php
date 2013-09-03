@@ -53,18 +53,16 @@ class school_slider extends CI_Controller {
 
 	public function controlSchoolSlider()
 	{
-		$school_field 					= $this->input->post('school_field');
-		$school_slider_caption_field	= $this->input->post('school_slider_caption_field');
+		$school_slider_caption_field = $this->input->post('school_slider_caption_field');
+		$school_slider_detail_field	 = $this->input->post('school_slider_detail_field');
 
-		if (($school_field!=0)&&($school_slider_caption_field!='')) 
+		if (($school_slider_caption_field!='')&&($school_slider_detail_field!='')) 
 		{
-			$image_name = filterForeignChars($school_slider_caption_field);
-			$css_filter = $image_name;
+			$css_filter = filterForeignChars($school_slider_caption_field);
 
 			$array = array(
 							'image_form_field'	=>	'school_slider_photo_field',
 							'upload_path'		=>	'assets/images/school_slider',
-							'image_name'		=>	$image_name,
 							'big_img_width'		=>	940,
 							'big_img_height'	=>	374,
 							'thumb_img_width'	=>	80,
@@ -83,8 +81,8 @@ class school_slider extends CI_Controller {
 				$big_img_data_for_db	= $this->image_upload_resize_library->getSizedBigImgNameForDB();
 				$thumb_img_data_for_db	= $this->image_upload_resize_library->getSizedThumbImgNameForDB();
 
-				$insert_item_detail_to_db = $this->school_slider_model->insertNewSchoolSlider($school_field,
-																							  $school_slider_caption_field,
+				$insert_item_detail_to_db = $this->school_slider_model->insertNewSchoolSlider($school_slider_caption_field,
+																							  $school_slider_detail_field,
 																							  $css_filter);
 				if ($insert_item_detail_to_db==TRUE) // item detail ler db ye insert edilmişse, item photo bilgilerini db ye insert eder 
 				{
@@ -92,7 +90,7 @@ class school_slider extends CI_Controller {
 					if ($insert_item_photo_to_db==TRUE) 
 					{
 						$message = 'Tebrikler! Kayıt Başarılı.';
-						$return_path = 'addSchoolSlider';
+						$return_path = 'allItems';
 						$this->jquery_notification_library->successMessage($message, $return_path,2);						
 					}
 					else
@@ -146,7 +144,6 @@ class school_slider extends CI_Controller {
 	public function updateItemDetailForm($id)
 	{
 		$this->parser_data['item_detail'] = $this->school_slider_model->readRow($id);
-		$this->parser_data['schools'] = $this->school_slider_model->readParentRow();
 		
 		$this->parser->parse('backend_views/admin_header_view',$this->parser_data);
 		$this->parser->parse('backend_views/admin_main_view',$this->parser_data);
@@ -157,20 +154,16 @@ class school_slider extends CI_Controller {
 	public function updateItemDetail()
 	{
 		$id = $this->input->post('id');
+		
+		$slider_caption 	= $this->input->post('slider_caption');
+		$slider_detail		= $this->input->post('slider_detail');
 
-		$school_field 					= $this->input->post('school_field');
-		$school_id_hidden				= $this->input->post('school_id_hidden');
-		$school_slider_caption_field	= $this->input->post('school_slider_caption_field');
-
-		if (($school_slider_caption_field!='')) 
+		if (($slider_caption!='')&&($slider_detail!="")) 
 		{
-			if ($school_field!=0)
-				$school_id = $school_field;
-			else
-				$school_id = $school_id_hidden;
 
-			$css_filter = filterForeignChars($school_slider_caption_field);
-			$update_item_detail = $this->school_slider_model->updateSchoolSliderDetail($id, $school_id, $school_slider_caption_field, $css_filter);
+			$css_filter = filterForeignChars($slider_caption);
+			$update_item_detail = $this->school_slider_model->updateSchoolSliderDetail($id, $slider_caption, 
+																					   $slider_detail, $css_filter);
 			if ($update_item_detail == TRUE) 
 			{
 				$message = 'Kayıt Güncelleme Başarılı..!';
@@ -191,7 +184,6 @@ class school_slider extends CI_Controller {
 			$this->jquery_notification_library->errorMessage($message, $return_path,1);			
 		}	
 	}
-
 
 	public function changeItemPhotoForm($id, $photo_id)
 	{
@@ -240,14 +232,10 @@ class school_slider extends CI_Controller {
 	{
 		$id 		= $this->input->post('id');
 		$photo_id 	= $this->input->post('photo_id');
-
-		$records 	= $this->school_slider_model->readRow($id);
-		$image_name = filterForeignChars($records[0]['slider_caption']);
-
+		
 		$array = array(
 							'image_form_field'	=>	'photo_field',
 							'upload_path'		=>	'assets/images/school_slider',
-							'image_name'		=>	$image_name.rand(),
 							'big_img_width'		=>	940,
 							'big_img_height'	=>	374,
 							'thumb_img_width'	=>	80,
@@ -300,7 +288,5 @@ class school_slider extends CI_Controller {
 			$return_path = "changeItemPhotoForm/$id/$photo_id";
 			$this->jquery_notification_library->errorMessage($message, $return_path,2);				
 		}
-	}			
-
+	}
 }
-

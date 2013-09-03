@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
--- Anamakine: localhost
--- Üretim Zamanı: 14 Haz 2013, 16:42:18
--- Sunucu sürümü: 5.5.25a
--- PHP Sürümü: 5.4.4
+-- Anamakine: 127.0.0.1
+-- Üretim Zamanı: 03 Eyl 2013, 10:41:25
+-- Sunucu sürümü: 5.5.32
+-- PHP Sürümü: 5.4.16
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Veritabanı: `edupublic`
 --
+CREATE DATABASE IF NOT EXISTS `edupublic` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `edupublic`;
 
 -- --------------------------------------------------------
 
@@ -38,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `email`, `pass`) VALUES
-(1, 'admin@edupublic.com', '12345');
+(1, 'admin@edupublic.net', '12345');
 
 -- --------------------------------------------------------
 
@@ -85,10 +87,10 @@ CREATE TABLE IF NOT EXISTS `country` (
 --
 
 INSERT INTO `country` (`country_id`, `country_name`, `css_filter`) VALUES
-(5, 'amerika birleşik devletleri', 'amerika-birlesik-devletleri'),
-(6, 'arjantin', 'arjantin'),
-(7, 'fransa', 'fransa'),
-(8, 'birleşik krallık', 'birlesik-krallik');
+(5, 'AMERİKA BİRLEŞİK DEVLETLERİ', 'AMERIKA-BIRLESIK-DEVLETLERI'),
+(6, 'ARJANTİN', 'ARJANTIN'),
+(7, 'FRANSA', 'FRANSA'),
+(8, 'BİRLEŞİK KRALLIK', 'BIRLESIK-KRALLIK');
 
 -- --------------------------------------------------------
 
@@ -112,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 --
 
 INSERT INTO `feedback` (`fb_id`, `fb_student_name`, `fb_student_surname`, `fb_title`, `fb_detail`, `fb_country`, `fb_lang_school`) VALUES
-(1, 'öğrenci adı', ' öğrenci soyadı', ' bildlirim başlık', 'bildirim deratrsdsmosderatrsdsmosderatrsdsmosderatrsdsmoslövlderatrsdsmoslkdovderatrsdsmosderatrsdsmosderatrsdsmos', 'örnek bildirim ülke', 'örnek bildirim dilokulu');
+(1, 'öğrenci adı', ' öğrenci soyadı', ' bildirim başlık', 'bildirim deratrsdsmosderatrsdsmosderatrsdsmosderatrsdsmoslövlderatrsdsmoslkdovderatrsdsmosderatrsdsmosderatrsdsmos', 'örnek bildirim ülke', 'örnek bildirim dilokulu');
 
 -- --------------------------------------------------------
 
@@ -168,14 +170,15 @@ CREATE TABLE IF NOT EXISTS `language_school` (
   `css_filter` text,
   PRIMARY KEY (`school_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Tablo döküm verisi `language_school`
 --
 
 INSERT INTO `language_school` (`school_id`, `country_id`, `school_name`, `school_summary`, `school_detail`, `css_filter`) VALUES
-(1, 6, 'amerikan dil enstitüsü', 'dil okulu açıklama özet', 'dil okulu açıklama detaydil okulu açıklama detaydil okulu açıklama detaydil okulu açıklama detaydil okulu açıklama detaydil okulu açıklama detaydil okulu açıklama detaydil okulu açıklama detay,', 'amerikan-dil-enstitusu');
+(4, 6, 'arjantin dil enstitüsü', 'arjantin dil enstitürü açıklama özet', 'arjantin dil okulu açıklama detayı', 'arjantin-dil-enstitusu'),
+(5, 5, 'amerikan language', 'amerikan dil okulu bu ', 'amerikan dil okulu detayı', 'amerikan-language');
 
 -- --------------------------------------------------------
 
@@ -190,14 +193,15 @@ CREATE TABLE IF NOT EXISTS `language_school_photo` (
   `school_thumb_photo` text NOT NULL,
   PRIMARY KEY (`school_photo_id`),
   KEY `school_id` (`school_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Tablo döküm verisi `language_school_photo`
 --
 
 INSERT INTO `language_school_photo` (`school_photo_id`, `school_id`, `school_big_photo`, `school_thumb_photo`) VALUES
-(1, 1, 'assets/images/schools/amerikan-dil-enstitusu2635.png', 'assets/images/schools/thumb/amerikan-dil-enstitusu2635_thumb.png');
+(4, 4, 'assets/images/schools/arjantin-dil-enstitusu14936.jpg', 'assets/images/schools/thumb/arjantin-dil-enstitusu14936_thumb.jpg'),
+(5, 5, 'assets/images/schools/amerikan-language15254.jpg', 'assets/images/schools/thumb/amerikan-language15254_thumb.jpg');
 
 -- --------------------------------------------------------
 
@@ -205,14 +209,14 @@ INSERT INTO `language_school_photo` (`school_photo_id`, `school_id`, `school_big
 -- Görünüm yapısı durumu `language_school_view`
 --
 CREATE TABLE IF NOT EXISTS `language_school_view` (
-`school_id` int(11)
-,`school_name` text
-,`country_id` int(11)
+`country_id` int(11)
 ,`country_name` text
+,`country_css_filter` text
+,`school_id` int(11)
+,`school_name` text
 ,`school_summary` text
 ,`school_detail` text
 ,`school_css` text
-,`country_css` text
 ,`school_photo_id` int(11)
 ,`school_big_photo` text
 ,`school_thumb_photo` text
@@ -229,15 +233,15 @@ CREATE TABLE IF NOT EXISTS `promo_slider` (
   `little_text_1` text NOT NULL,
   `little_text_2` text NOT NULL,
   PRIMARY KEY (`slider_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Tablo döküm verisi `promo_slider`
 --
 
 INSERT INTO `promo_slider` (`slider_id`, `big_text`, `little_text_1`, `little_text_2`) VALUES
-(4, 'promo slider büyük metin', 'promo slider küçük metin üst', 'promo slider küçük metin alt'),
-(5, 'promo slider büyük metin 2', 'promo slider küçük metin üst 2', 'promo slider küçük metin alt 2');
+(4, 'yeni dönem başladı', 'bizi sizinle heran iletişime geçmeye hazırız', 'promo slider küçük  markadaş  tayt'),
+(6, 'saksı değilim ben', 'ben erol büyükburcum erol büyükburç', 'en çok bana soracaksın en çok bana ');
 
 -- --------------------------------------------------------
 
@@ -247,20 +251,18 @@ INSERT INTO `promo_slider` (`slider_id`, `big_text`, `little_text_1`, `little_te
 
 CREATE TABLE IF NOT EXISTS `school_slider` (
   `slider_id` int(11) NOT NULL AUTO_INCREMENT,
-  `school_id` int(11) NOT NULL,
   `slider_caption` text NOT NULL,
-  `css_filter` text NOT NULL,
-  PRIMARY KEY (`slider_id`),
-  KEY `school_id` (`school_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+  `slider_detail` text NOT NULL,
+  `slider_css` text NOT NULL,
+  PRIMARY KEY (`slider_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Tablo döküm verisi `school_slider`
 --
 
-INSERT INTO `school_slider` (`slider_id`, `school_id`, `slider_caption`, `css_filter`) VALUES
-(5, 1, 'örnek slider açıklaması 1', 'ornek-slider-aciklamasi-1'),
-(6, 1, 'örnek slider açıklaması 2', 'ornek-slider-aciklamasi-2');
+INSERT INTO `school_slider` (`slider_id`, `slider_caption`, `slider_detail`, `slider_css`) VALUES
+(4, 'slider ilk başlık', 'ben bu slidera başlarken şöyle bir başlık düşünmüştüm ancak bi oktadan sonra karar  verdim ki bu bzim istediğimiz gibi olmayacak üstüne üstük şöyle saçma sapan olayların vukuu bulmasına da sebep olacak bundan kensinlikle adım kadar eminim bana güvenebilirsiniz erdim ki bu bzim istediğimiz gibi olmayacak üstüne üstük şöyle saçma sapan olayların vukuu bulmasına da sebep olacak bundan kensinlikle adım kadar eminim bana güvenebilirsiniz erdim ki bu bzim istediğimiz gibi olmayacak üstüne üstük şöyle saçma sapan olayların vukuu bulmasına da sebep olacak bundan kensinlikle adım kadar eminim bana güvenebilirsiniz erdim ki bu bzim istediğimiz gibi olmayacak üstüne üstük şöyle saçma sapan olayların vukuu bulmasına da sebep olacak bundan kensinlikle adım kadar eminim bana güvenebilirsiniz', 'slider-ilk-baslik');
 
 -- --------------------------------------------------------
 
@@ -275,15 +277,14 @@ CREATE TABLE IF NOT EXISTS `school_slider_photo` (
   `slider_thumb_photo` text NOT NULL,
   PRIMARY KEY (`slider_photo_id`),
   KEY `slider_id` (`slider_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Tablo döküm verisi `school_slider_photo`
 --
 
 INSERT INTO `school_slider_photo` (`slider_photo_id`, `slider_id`, `slider_big_photo`, `slider_thumb_photo`) VALUES
-(5, 5, 'assets/images/school_slider/ornek-slider-aciklamasi-113025.jpg', 'assets/images/school_slider/thumb/ornek-slider-aciklamasi-113025_thumb.jpg'),
-(11, 6, 'assets/images/school_slider/ornek-slider-aciklamasi-2237967197.jpg', 'assets/images/school_slider/thumb/ornek-slider-aciklamasi-2237967197_thumb.jpg');
+(6, 4, 'assets/images/school_slider/24892_24261.jpg', 'assets/images/school_slider/thumb/24892_24261_thumb.jpg');
 
 -- --------------------------------------------------------
 
@@ -293,10 +294,8 @@ INSERT INTO `school_slider_photo` (`slider_photo_id`, `slider_id`, `slider_big_p
 CREATE TABLE IF NOT EXISTS `school_slider_view` (
 `slider_id` int(11)
 ,`slider_caption` text
-,`slider_css_filter` text
-,`school_id` int(11)
-,`school_name` text
-,`school_css_filter` text
+,`slider_detail` text
+,`slider_css` text
 ,`slider_photo_id` int(11)
 ,`slider_big_photo` text
 ,`slider_thumb_photo` text
@@ -395,14 +394,15 @@ CREATE TABLE IF NOT EXISTS `visa` (
   `visa_detail` text NOT NULL,
   `visa_css_filter` text,
   PRIMARY KEY (`visa_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Tablo döküm verisi `visa`
 --
 
 INSERT INTO `visa` (`visa_id`, `visa_title`, `visa_detail`, `visa_css_filter`) VALUES
-(1, 'amerika birleşik devletleri', 'amerika birleşik devletlerine gitmek inanın çok zordur çok meşakkatlidir, bu konuda bize güvenebilirsiniz', NULL);
+(1, 'amerika birleşik devletleri', 'amerika birleşik devletlerine gitmek inanın çok zordur çok meşakkatlidir, bu konuda bize güvenebilirsiniz', NULL),
+(2, 'gf', 'gfgf', NULL);
 
 -- --------------------------------------------------------
 
@@ -417,14 +417,15 @@ CREATE TABLE IF NOT EXISTS `visa_photo` (
   `visa_thumb_photo` text NOT NULL,
   PRIMARY KEY (`visa_photo_id`),
   KEY `visa_id` (`visa_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Tablo döküm verisi `visa_photo`
 --
 
 INSERT INTO `visa_photo` (`visa_photo_id`, `visa_id`, `visa_big_photo`, `visa_thumb_photo`) VALUES
-(2, 1, 'assets/images/visa/amerika-birlesik-devletleri2178622603.png', 'assets/images/visa/thumb/amerika-birlesik-devletleri2178622603_thumb.png');
+(2, 1, 'assets/images/visa/amerika-birlesik-devletleri2178622603.png', 'assets/images/visa/thumb/amerika-birlesik-devletleri2178622603_thumb.png'),
+(3, 2, 'assets/images/visa/gf26245.jpg', 'assets/images/visa/thumb/gf26245_thumb.jpg');
 
 -- --------------------------------------------------------
 
@@ -456,7 +457,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIE
 --
 DROP TABLE IF EXISTS `language_school_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIEW `language_school_view` AS select `language_school`.`school_id` AS `school_id`,`language_school`.`school_name` AS `school_name`,`country`.`country_id` AS `country_id`,`country`.`country_name` AS `country_name`,`language_school`.`school_summary` AS `school_summary`,`language_school`.`school_detail` AS `school_detail`,`language_school`.`css_filter` AS `school_css`,`country`.`css_filter` AS `country_css`,`language_school_photo`.`school_photo_id` AS `school_photo_id`,`language_school_photo`.`school_big_photo` AS `school_big_photo`,`language_school_photo`.`school_thumb_photo` AS `school_thumb_photo` from ((`country` join `language_school`) join `language_school_photo`) where ((`country`.`country_id` = `language_school`.`country_id`) and (`language_school`.`school_id` = `language_school_photo`.`school_id`));
+CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIEW `language_school_view` AS select `country`.`country_id` AS `country_id`,`country`.`country_name` AS `country_name`,`country`.`css_filter` AS `country_css_filter`,`language_school`.`school_id` AS `school_id`,`language_school`.`school_name` AS `school_name`,`language_school`.`school_summary` AS `school_summary`,`language_school`.`school_detail` AS `school_detail`,`language_school`.`css_filter` AS `school_css`,`language_school_photo`.`school_photo_id` AS `school_photo_id`,`language_school_photo`.`school_big_photo` AS `school_big_photo`,`language_school_photo`.`school_thumb_photo` AS `school_thumb_photo` from ((`country` join `language_school`) join `language_school_photo`) where ((`country`.`country_id` = `language_school`.`country_id`) and (`language_school`.`school_id` = `language_school_photo`.`school_id`));
 
 -- --------------------------------------------------------
 
@@ -465,7 +466,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIE
 --
 DROP TABLE IF EXISTS `school_slider_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIEW `school_slider_view` AS select `school_slider`.`slider_id` AS `slider_id`,`school_slider`.`slider_caption` AS `slider_caption`,`school_slider`.`css_filter` AS `slider_css_filter`,`language_school`.`school_id` AS `school_id`,`language_school`.`school_name` AS `school_name`,`language_school`.`css_filter` AS `school_css_filter`,`school_slider_photo`.`slider_photo_id` AS `slider_photo_id`,`school_slider_photo`.`slider_big_photo` AS `slider_big_photo`,`school_slider_photo`.`slider_thumb_photo` AS `slider_thumb_photo` from ((`language_school` join `school_slider`) join `school_slider_photo`) where ((`language_school`.`school_id` = `school_slider`.`school_id`) and (`school_slider`.`slider_id` = `school_slider_photo`.`slider_id`));
+CREATE ALGORITHM=UNDEFINED DEFINER=`edupub`@`localhost` SQL SECURITY DEFINER VIEW `school_slider_view` AS select `school_slider`.`slider_id` AS `slider_id`,`school_slider`.`slider_caption` AS `slider_caption`,`school_slider`.`slider_detail` AS `slider_detail`,`school_slider`.`slider_css` AS `slider_css`,`school_slider_photo`.`slider_photo_id` AS `slider_photo_id`,`school_slider_photo`.`slider_big_photo` AS `slider_big_photo`,`school_slider_photo`.`slider_thumb_photo` AS `slider_thumb_photo` from (`school_slider` join `school_slider_photo`) where (`school_slider`.`slider_id` = `school_slider_photo`.`slider_id`);
 
 -- --------------------------------------------------------
 
@@ -515,12 +516,6 @@ ALTER TABLE `language_school`
 --
 ALTER TABLE `language_school_photo`
   ADD CONSTRAINT `language_school_photo_ibfk_1` FOREIGN KEY (`school_id`) REFERENCES `language_school` (`school_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Tablo kısıtlamaları `school_slider`
---
-ALTER TABLE `school_slider`
-  ADD CONSTRAINT `school_slider_ibfk_1` FOREIGN KEY (`school_id`) REFERENCES `language_school` (`school_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Tablo kısıtlamaları `school_slider_photo`
